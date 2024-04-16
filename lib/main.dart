@@ -1,3 +1,4 @@
+//todo: uncomment
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('fa'), // English
       ],
-      //todo: change it back to SplashScreen
+
+      //todo: change it back to splash
       home: MainScreen(),
     );
   }

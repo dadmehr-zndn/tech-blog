@@ -1,53 +1,70 @@
+//todo: uncomment
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_blog/second_screen.dart';
+import 'package:tech_blog/constants.dart';
+import 'package:tech_blog/gen/assets.gen.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
-  //todo: I am practicing navigation and data passing
-
-  final _textController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _textController,
-              obscureText: true,
-              textDirection: TextDirection.ltr,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.green),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                label: const Text('Password'),
-              ),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SecondScreen(_textController.text),
-                  )),
-              child: const Text('Submit'),
-            )
+    var size = MediaQuery.of(context).size;
 
-            //todo: uncomment
-            // Text('Main Screen'),
-          ],
-        ),
-      )),
+    return Scaffold(
+      body: Column(
+        children: [
+          // AppBar
+          Padding(
+            padding: EdgeInsets.fromLTRB(12.53, 30.6, 12.53, 29.28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(Icons.menu),
+                Assets.images.logo.image(height: size.height / 13.63),
+                Transform.scale(scaleX: -1, child: Icon(Icons.search)),
+              ],
+            ),
+          ),
+
+          // Poster
+          Stack(
+            children: [
+              // Image
+              Container(
+                height: size.height / 4.20,
+                width: size.width / 1.19,
+                decoration: BoxDecoration(
+                  //todo: check for the exact radius
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image: AssetImage(Assets.images.posterTest.path),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+
+              // Gradient Overlay
+              Container(
+                height: size.height / 4.20,
+                width: size.width / 1.19,
+                decoration: BoxDecoration(
+                  //todo: check for the exact radius
+                  borderRadius: BorderRadius.circular(16),
+                  gradient: LinearGradient(
+                    colors: GradientColors.homePosterOverlay,
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0, 0.7, 1],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

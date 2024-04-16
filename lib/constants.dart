@@ -170,7 +170,12 @@ class GradientColors {
     Color(0xff19005E),
     Color(0xff440457),
   ];
-  static const List<Color> imageOverlay = [
+  static const List<Color> homePosterOverlay = [
+    Color.fromARGB(0, 40, 41, 46),
+    Color.fromARGB(178, 72, 20, 88),
+    Color(0xff1C1451),
+  ];
+  static const List<Color> posterOpened = [
     Color(0xff2E0347),
     Color.fromARGB(0, 80, 80, 80),
   ];
