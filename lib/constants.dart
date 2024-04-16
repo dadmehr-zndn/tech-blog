@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Strings {
   // main-1
   static const String changeProfilePhoto = 'ویرایش عکس پروفایل';
@@ -112,4 +114,12 @@ class Strings {
   static const String chooseAudioFile = 'انتخاب فایل صوتی';
   static const String seconds = 'ثانیه';
   static const String minutes = 'دقیقه';
+
+  // fake person detail
+  static const String name = 'دادمهر زندیان';
+  static const String gmail = 'dadmehr@gmail.com';
+}
+
+class SolidColors {
+  static const Color primaryColor = Color(0xff440457);
 }
