@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:tech_blog/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,6 +14,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScrennState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MainScreen(),
+            )));
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

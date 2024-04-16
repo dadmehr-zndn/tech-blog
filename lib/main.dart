@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/gen/fonts.gen.dart';
+import 'package:tech_blog/main_screen.dart';
 import 'package:tech_blog/splash_screen.dart';
 // import 'gen/fonts.gen.dart';
 // import 'gen/assets.gen.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('fa'), // English
       ],
-      home: const SplashScreen(),
+      //todo: change it back to SplashScreen
+      home: MainScreen(),
     );
   }
 }
