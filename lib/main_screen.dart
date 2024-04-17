@@ -17,6 +17,8 @@ class MainScreen extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
     var sidePaddings = size.width / 12.53;
     var hastagPadding = size.width / 28.72;
+    // var blogPostHeight = size.height / 4.37;
+    var blogPostHeight = size.height / 4;
 
     return Scaffold(
       body: Column(
@@ -219,19 +221,117 @@ class MainScreen extends StatelessWidget {
 
           //Hottest Articles ListView
           SizedBox(
-            height: size.width / 4.37,
+            height: blogPostHeight,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: BouncingScrollPhysics(),
-              itemCount: 15,
+              itemCount: blogList.length - 1,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(
                       right: index == 0 ? sidePaddings : size.width / 22.34),
-                  child: Container(
-                    width: 100,
-                    height: size.width / 4.37,
-                    color: Colors.blueGrey,
+                  child: SizedBox(
+                    width: size.width / 2.66,
+                    child: Column(
+                      children: [
+                        // Blog Image & Creator & Views
+                        Stack(
+                          children: [
+                            // Blog Image
+                            Container(
+                              height: size.height / 5.53,
+                              width: size.width / 2.66,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18),
+                                image: DecorationImage(
+                                  image:
+                                      NetworkImage(blogList[index].imagePath),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+
+                            // Gradient
+                            Positioned(
+                              bottom: 0,
+                              child: Container(
+                                height: size.height / 11.03,
+                                width: size.width / 2.66,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(18),
+                                      bottomLeft: Radius.circular(18)),
+                                  gradient: LinearGradient(
+                                    colors: GradientColors.list,
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // Creator & Views
+                            Positioned(
+                              bottom: size.height / 87.95,
+                              child: SizedBox(
+                                width: size.width / 2.66,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: size.width / 29.74),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        blogList[index].creator,
+                                        style: textTheme.headline2
+                                            ?.copyWith(fontSize: 16),
+                                      ),
+
+                                      // views
+                                      SizedBox(
+                                        width: size.width / 11,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              blogList[index].views,
+                                              style: textTheme.headline2
+                                                  ?.copyWith(fontSize: 16),
+                                            ),
+                                            Icon(
+                                              Icons.remove_red_eye_sharp,
+                                              color: SolidColors.icon,
+                                              size: size.width / 30,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(height: size.height / 82.72),
+
+                        Text(
+                          blogList[index].title,
+                          style: textTheme.headline2!.copyWith(
+                            color: SolidColors.articleBody,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15.3,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

@@ -193,4 +193,8 @@ class GradientColors {
     Color(0xff000000),
     Color(0xff3F3F3F),
   ];
+  static List<Color> list = [
+    const Color(0xff000000).withOpacity(0),
+    const Color(0xff000000),
+  ];
 }
