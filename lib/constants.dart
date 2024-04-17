@@ -150,6 +150,7 @@ class SolidColors {
   static const Color podcastTime = Color(0xff747474);
   static const Color podcastProgressFill = Color(0xffFF8B1A);
   static const Color podcastProgressBar = Color(0xffffffff);
+  static const Color podcastTitle = Color(0xff000000);
 
   static const Color articleTitle = Color(0xff333333);
   static const Color timeCreated = Color(0xff9B9B9B);
