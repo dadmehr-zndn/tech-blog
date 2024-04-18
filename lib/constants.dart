@@ -182,6 +182,11 @@ class GradientColors {
     Color(0xff19005E),
     Color(0xff440457),
   ];
+  static List<Color> navigationBarBackground = [
+    const Color(0xffffffff).withOpacity(1.0),
+    const Color(0xffffffff).withOpacity(0.7),
+    const Color(0xffffffff).withOpacity(0.0),
+  ];
   static const List<Color> homePosterOverlay = [
     Color.fromARGB(0, 40, 41, 46),
     Color.fromARGB(178, 72, 20, 88),
