@@ -22,6 +22,34 @@ class MainScreen extends StatelessWidget {
     var podcastPostHeight = size.height / 4.2;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: SolidColors.appbar,
+        title: Padding(
+          padding: EdgeInsets.fromLTRB(
+            sidePaddings,
+            size.height / 30.6,
+            sidePaddings,
+            size.height / 29.28,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(
+                Icons.menu,
+                size: size.width / 17,
+              ),
+              Assets.images.logo.image(height: size.height / 13.63),
+              Transform.scale(
+                scaleX: -1,
+                child: Icon(
+                  Icons.search,
+                  size: size.width / 17,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(bottom: size.height / 3.56),
@@ -38,28 +66,6 @@ class MainScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    // AppBar
-                    Padding(
-                      padding: EdgeInsets.only(bottom: size.height / 29.28),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.menu,
-                            size: size.width / 17,
-                          ),
-                          Assets.images.logo.image(height: size.height / 13.63),
-                          Transform.scale(
-                            scaleX: -1,
-                            child: Icon(
-                              Icons.search,
-                              size: size.width / 17,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
                     // Poster
                     Stack(
                       children: [
@@ -415,6 +421,11 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
+      //todo: implemet navigationBar
+      // bottomNavigationBar: Container(
+      //     // height: 100,
+      //     // color: Colors.blue,
+      //     ),
     );
   }
 }

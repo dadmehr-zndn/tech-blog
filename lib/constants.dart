@@ -125,6 +125,7 @@ class SolidColors {
   static const Color buttonTextColor = Color(0xffffffff);
   static const Color secondButtonColor = Color(0xff2A2A2A);
   static const Color scaffold = Color(0xffffffff);
+  static const Color appbar = Color(0xffffffff);
 
   static const Color systemNavigationBar = Color(0xffffffff);
   static const Color systemStatusBar = Color(0xffffffff);

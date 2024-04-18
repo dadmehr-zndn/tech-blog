@@ -5,7 +5,7 @@ import 'models.dart';
 Map homePageFakeDate = {
   'imagePath': Assets.images.posterTest.path,
   'creator': 'ملیکا عزیزی',
-  'createdcreatedDate': 'یک روز پیش',
+  'createdDate': 'یک روز پیش',
   'title': 'دوازده قدم برنامه نویسی یک دوره ی...',
   'views': '253',
 };
