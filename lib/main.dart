@@ -53,7 +53,13 @@ class MyApp extends StatelessWidget {
           headline3: TextStyle(
             color: SolidColors.showSectionTitle,
             fontFamily: 'ArtinSharp',
-            fontSize: 16,
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+          headline4: TextStyle(
+            color: SolidColors.profileTexts,
+            fontFamily: 'ArtinSharp',
+            fontSize: 14,
             fontWeight: FontWeight.w400,
           ),
         ),

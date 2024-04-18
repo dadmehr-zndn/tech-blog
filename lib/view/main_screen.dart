@@ -2,8 +2,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/view/profile_screen.dart';
 import 'home_screen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -50,13 +52,15 @@ class MainScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          HomeScreen(
-            size: size,
-            sidePaddings: sidePaddings,
-            textTheme: textTheme,
-            hastagPadding: hastagPadding,
-            blogPostHeight: blogPostHeight,
-            podcastPostHeight: podcastPostHeight,
+          Positioned.fill(
+            child: ProfileScreen(
+              size: size,
+              sidePaddings: sidePaddings,
+              textTheme: textTheme,
+              hastagPadding: hastagPadding,
+              blogPostHeight: blogPostHeight,
+              podcastPostHeight: podcastPostHeight,
+            ),
           ),
 
           // Bottom Navigation Bar
