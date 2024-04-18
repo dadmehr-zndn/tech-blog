@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'view/home_screen.dart';
+import 'home_screen.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
