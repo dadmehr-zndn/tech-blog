@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           headline1: TextStyle(
             color: SolidColors.posterTitle,
             fontFamily: 'ArtinSharp',
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
           subtitle1: TextStyle(

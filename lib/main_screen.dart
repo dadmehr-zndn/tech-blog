@@ -139,9 +139,15 @@ class MainScreen extends StatelessWidget {
                               SizedBox(height: size.height / 75),
 
                               // title
-                              Text(
-                                homePageFakeDate['title'],
-                                style: textTheme.headline1,
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width / 11.03),
+                                child: Text(
+                                  homePageFakeDate['title'],
+                                  style: textTheme.headline1,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ],
                           ),
