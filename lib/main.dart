@@ -1,4 +1,4 @@
-//todo: uncomment
+//TODO: uncomment
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/view/main_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:tech_blog/view/register_welcome_screen.dart';
 import 'package:tech_blog/view/splash_screen.dart';
 // import 'gen/fonts.gen.dart';
 // import 'gen/assets.gen.dart';
@@ -74,7 +75,7 @@ class MyApp extends StatelessWidget {
         Locale('fa'), // English
       ],
 
-      //todo: change it back to splash
+      //TODO: change it back to splash
       home: SplashScreen(),
     );
   }

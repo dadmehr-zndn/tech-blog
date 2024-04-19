@@ -166,7 +166,7 @@ class SolidColors {
 
   static const Color pageBackgroundOverlay = Color.fromARGB(87, 0, 0, 0);
   static const Color sharingBody = Color(0xff6B6B6B);
-  static const Color welcomeText = Color(0xff6B6B6B);
+  static const Color registerScreenText = Color(0xff6B6B6B);
 
   static const Color labelTextField = Color(0xff6B6B6B);
   static const Color boxShowingMessage = Color(0xff474747);

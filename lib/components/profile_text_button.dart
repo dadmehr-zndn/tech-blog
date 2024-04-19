@@ -18,7 +18,7 @@ class ProfileTextButton extends StatelessWidget {
     return InkWell(
       splashColor: SolidColors.primaryColor.withOpacity(0.1),
       onTap: () {
-        //todo: implement
+        //TODO: implement
       },
       child: SizedBox(
         height: size.height / 15.97,

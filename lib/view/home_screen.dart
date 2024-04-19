@@ -1,4 +1,4 @@
-//todo: uncomment
+//TODO: uncomment
 // ignore_for_file: deprecated_member_use, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/cupertino.dart';
@@ -111,7 +111,7 @@ class HomePageHottestPodcastsList extends StatelessWidget {
                   width: size.width / 3.16,
                   height: size.height / 5.81,
                   decoration: BoxDecoration(
-                    //todo: check for the exact radius
+                    //TODO: check for the exact radius
                     borderRadius: BorderRadius.circular(18),
                     image: DecorationImage(
                       image: NetworkImage(podcastList[index].imageUrl),
@@ -366,7 +366,7 @@ class HomePageHashtagList extends StatelessWidget {
             ),
             child: Container(
               decoration: BoxDecoration(
-                //todo: look for the exact radius
+                //TODO: look for the exact radius
                 borderRadius: BorderRadius.circular(15),
                 gradient: LinearGradient(
                   colors: GradientColors.tags,
@@ -437,7 +437,7 @@ class HomeScreenPoster extends StatelessWidget {
               Container(
                 height: size.height / 4.20,
                 decoration: BoxDecoration(
-                  //todo: check for the exact radius
+                  //TODO: check for the exact radius
                   borderRadius: BorderRadius.all(Radius.circular(25)),
                   image: DecorationImage(
                     image: AssetImage(homePageFakeDate['imagePath']),
@@ -445,7 +445,7 @@ class HomeScreenPoster extends StatelessWidget {
                   ),
                 ),
                 foregroundDecoration: BoxDecoration(
-                  //todo: check for the exact radius
+                  //TODO: check for the exact radius
                   borderRadius: BorderRadius.circular(25),
                   gradient: LinearGradient(
                     colors: GradientColors.homePosterOverlay,

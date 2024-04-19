@@ -1,18 +1,31 @@
-//todo: uncomment
+//TODO: uncomment
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, deprecated_member_use
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/view/profile_screen.dart';
+import 'package:tech_blog/view/register_welcome_screen.dart';
 import 'home_screen.dart';
 
-class MainScreen extends StatelessWidget {
+enum Screen { home, profile }
+
+class MainScreen extends StatefulWidget {
   MainScreen({super.key});
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int selectedScreenIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
+    print(Screen);
+
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     var sidePaddings = size.width / 12.53;
@@ -23,6 +36,7 @@ class MainScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: SolidColors.appbar,
         title: Padding(
           padding: EdgeInsets.fromLTRB(
@@ -53,13 +67,27 @@ class MainScreen extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
-            child: ProfileScreen(
-              size: size,
-              sidePaddings: sidePaddings,
-              textTheme: textTheme,
-              hastagPadding: hastagPadding,
-              blogPostHeight: blogPostHeight,
-              podcastPostHeight: podcastPostHeight,
+            child: IndexedStack(
+              index: selectedScreenIndex,
+              children: [
+                HomeScreen(
+                  size: size,
+                  sidePaddings: sidePaddings,
+                  textTheme: textTheme,
+                  hastagPadding: hastagPadding,
+                  blogPostHeight: blogPostHeight,
+                  podcastPostHeight: podcastPostHeight,
+                ),
+                RegisterWelcomeScreen(),
+                ProfileScreen(
+                  size: size,
+                  sidePaddings: sidePaddings,
+                  textTheme: textTheme,
+                  hastagPadding: hastagPadding,
+                  blogPostHeight: blogPostHeight,
+                  podcastPostHeight: podcastPostHeight,
+                ),
+              ],
             ),
           ),
 
@@ -68,53 +96,90 @@ class MainScreen extends StatelessWidget {
             bottom: 0,
             right: 0,
             left: 0,
-            child: Container(
-              height: size.height / 5.89,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: GradientColors.navigationBarBackground,
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  stops: [0, 0.4, 1],
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(top: size.height / 14),
-                child: Center(
-                  child: Container(
-                    height: size.height / 12.41,
-                    width: size.width / 1.36,
-                    decoration: BoxDecoration(
-                      //todo: check for the exact redius
-                      borderRadius: BorderRadius.circular(16),
-                      gradient: LinearGradient(
-                          colors: GradientColors.bottomNavigation),
-                    ),
-                    child: Center(
-                        child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ImageIcon(
-                          Assets.icons.home.image().image,
-                          color: SolidColors.icon,
-                        ),
-                        ImageIcon(
-                          Assets.icons.feather.image().image,
-                          color: SolidColors.icon,
-                        ),
-                        ImageIcon(
-                          Assets.icons.user.image().image,
-                          color: SolidColors.icon,
-                        ),
-                      ],
-                    )),
-                  ),
-                ),
-              ),
-            ),
+            child: BottomNavigationBar(
+                size: size,
+                changeScreen: (int index) {
+                  if (index == 1) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterWelcomeScreen(),
+                      ),
+                    );
+                  }
+                  setState(() => selectedScreenIndex = index);
+                }),
           )
         ],
+      ),
+    );
+  }
+}
+
+class BottomNavigationBar extends StatelessWidget {
+  const BottomNavigationBar({
+    super.key,
+    required this.size,
+    required this.changeScreen,
+  });
+
+  final Size size;
+  final Function(int) changeScreen;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: size.height / 5.89,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: GradientColors.navigationBarBackground,
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          stops: [0, 0.4, 1],
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(top: size.height / 14),
+        child: Center(
+          child: Container(
+            height: size.height / 12.41,
+            width: size.width / 1.36,
+            decoration: BoxDecoration(
+              //TODO: check for the exact redius
+              borderRadius: BorderRadius.circular(16),
+              gradient: LinearGradient(colors: GradientColors.bottomNavigation),
+            ),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () => changeScreen(0),
+                    child: ImageIcon(
+                      Assets.icons.home.image().image,
+                      color: SolidColors.icon,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => changeScreen(1),
+                    child: ImageIcon(
+                      Assets.icons.feather.image().image,
+                      color: SolidColors.icon,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => changeScreen(2),
+                    child: ImageIcon(
+                      Assets.icons.user.image().image,
+                      color: SolidColors.icon,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
