@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:validators/validators.dart';
 
 class RegisterWelcomeScreen extends StatelessWidget {
   const RegisterWelcomeScreen({super.key});
@@ -14,9 +15,6 @@ class RegisterWelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
-
-    //TODO: my try for email req
-    String emailInput = '';
 
     return SizedBox(
       child: Scaffold(
@@ -84,12 +82,8 @@ class RegisterWelcomeScreen extends StatelessWidget {
                                     height: size.height / 17,
                                     child: TextField(
                                       onChanged: (value) {
-                                        emailInput = 'incorrect';
-                                        var emailReg = RegExp(
-                                            r'^[a-zA-Z0-9]{10}@.{5}\.com$');
-
-                                        if (value.contains(emailReg)) {
-                                          emailInput = value;
+                                        if (isEmail(value)) {
+                                          print(value);
                                         }
                                       },
                                       textAlign: TextAlign.center,
@@ -109,7 +103,6 @@ class RegisterWelcomeScreen extends StatelessWidget {
                                 ElevatedButton(
                                   onPressed: () {
                                     //TODO: implement
-                                    print(emailInput);
                                   },
                                   child: Text(
                                     Strings.buttonContinue,
