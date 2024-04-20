@@ -15,6 +15,9 @@ class RegisterWelcomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
 
+    //TODO: my try for email req
+    String emailInput = '';
+
     return SizedBox(
       child: Scaffold(
         body: Center(
@@ -48,21 +51,20 @@ class RegisterWelcomeScreen extends StatelessWidget {
                     isScrollControlled: true,
                     context: context,
                     builder: (context) {
-                      return Container(
-                        height: size.height / 2.57,
-                        width: size.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            //TODO: check for the exact radius
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: Container(
+                          height: size.height / 2.57,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              //TODO: check for the exact radius
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                            ),
                           ),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                bottom:
-                                    MediaQuery.of(context).viewInsets.bottom),
+                          child: Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -81,6 +83,15 @@ class RegisterWelcomeScreen extends StatelessWidget {
                                   child: SizedBox(
                                     height: size.height / 17,
                                     child: TextField(
+                                      onChanged: (value) {
+                                        emailInput = 'incorrect';
+                                        var emailReg = RegExp(
+                                            r'^[a-zA-Z0-9]{10}@.{5}\.com$');
+
+                                        if (value.contains(emailReg)) {
+                                          emailInput = value;
+                                        }
+                                      },
                                       textAlign: TextAlign.center,
                                       textAlignVertical:
                                           TextAlignVertical.bottom,
@@ -98,6 +109,7 @@ class RegisterWelcomeScreen extends StatelessWidget {
                                 ElevatedButton(
                                   onPressed: () {
                                     //TODO: implement
+                                    print(emailInput);
                                   },
                                   child: Text(
                                     Strings.buttonContinue,

@@ -24,8 +24,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(Screen);
-
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     var sidePaddings = size.width / 12.53;
