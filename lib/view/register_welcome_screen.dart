@@ -41,27 +41,28 @@ class RegisterWelcomeScreen extends StatelessWidget {
               SizedBox(height: size.height / 7.16),
 
               // Button "Let's go"
-              Padding(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Display BottomSheet
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          height: size.height / 2.57,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              //TODO: check for the exact radius
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                            ),
+              ElevatedButton(
+                onPressed: () {
+                  // Display BottomSheet
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        height: size.height / 2.57,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            //TODO: check for the exact radius
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
                           ),
-                          child: Center(
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -106,12 +107,12 @@ class RegisterWelcomeScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                        );
-                      },
-                    );
-                  },
-                  child: Text(Strings.buttonLetsGo, style: textTheme.button),
-                ),
+                        ),
+                      );
+                    },
+                  );
+                },
+                child: Text(Strings.buttonLetsGo, style: textTheme.button),
               ),
             ],
           ),
