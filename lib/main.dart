@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
+
     return MaterialApp(
       title: 'Tech Blog',
       debugShowCheckedModeBanner: false,
@@ -62,6 +64,63 @@ class MyApp extends StatelessWidget {
             fontFamily: 'ArtinSharp',
             fontSize: 14,
             fontWeight: FontWeight.w400,
+          ),
+          bodyText1: TextStyle(
+            color: SolidColors.registerScreenText,
+            fontFamily: 'ArtinSharp',
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+          ),
+          subtitle2: TextStyle(
+            color: SolidColors.textHint,
+            fontFamily: 'ArtinSharp',
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+          ),
+          button: TextStyle(
+            color: SolidColors.buttonTextColor,
+            fontFamily: 'ArtinSharp',
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith(
+              (states) {
+                if (states.contains(MaterialState.pressed)) {
+                  return SolidColors.primaryColor.withOpacity(0.7);
+                }
+                return SolidColors.primaryColor;
+              },
+            ),
+            shape: MaterialStatePropertyAll(
+              RoundedRectangleBorder(
+                //TODO: exact Radius
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: textTheme.subtitle2,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(11),
+            borderSide: BorderSide(color: SolidColors.border),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(11),
+            borderSide: BorderSide(
+              color: SolidColors.border,
+              width: 1.5,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(11),
+            borderSide: BorderSide(
+              color: SolidColors.primaryColor,
+              width: 2,
+            ),
           ),
         ),
       ),

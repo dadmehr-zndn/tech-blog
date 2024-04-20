@@ -41,39 +41,76 @@ class RegisterWelcomeScreen extends StatelessWidget {
               SizedBox(height: size.height / 7.16),
 
               // Button "Let's go"
-              ElevatedButton(
-                onPressed: () {
-                  //TODO: delete
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: SolidColors.primaryColor,
-                      content: Text(
-                        'خوشگل فعلا تا همینجا پیش رفتیم 😂🙈',
-                        style: textTheme.headline1!.copyWith(fontSize: 15),
-                      ),
-                    ),
-                  );
-                },
-                child: Text(
-                  Strings.buttonLetsGo,
-                  style: textTheme.headline4!.copyWith(
-                    color: SolidColors.buttonTextColor,
-                    fontSize: 14,
-                  ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith((states) {
-                    if (states.contains(MaterialState.pressed)) {
-                      return SolidColors.primaryColor.withOpacity(0.7);
-                    }
-                    return SolidColors.primaryColor;
-                  }),
-                  shape: MaterialStatePropertyAll(
-                    RoundedRectangleBorder(
-                      //TODO: exact Radius
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                  ),
+              Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Display BottomSheet
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          height: size.height / 2.57,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              //TODO: check for the exact radius
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                            ),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // لطفا ایمیلت را وارد کن
+                                Text(
+                                  Strings.plsEnterYourEmail,
+                                  style: textTheme.bodyText1,
+                                ),
+
+                                SizedBox(height: size.height / 33.81),
+
+                                // Email TextField
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: size.width / 5.7),
+                                  child: SizedBox(
+                                    height: size.height / 17,
+                                    child: TextField(
+                                      textAlign: TextAlign.center,
+                                      textAlignVertical:
+                                          TextAlignVertical.bottom,
+                                      decoration: InputDecoration(
+                                        hintText: Strings.techBlogEmail,
+                                        hintStyle: textTheme.subtitle2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                SizedBox(height: size.height / 16.08),
+
+                                // Button Continue
+                                ElevatedButton(
+                                  onPressed: () {
+                                    //TODO: implement
+                                  },
+                                  child: Text(
+                                    Strings.buttonContinue,
+                                    style: textTheme.button,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Text(Strings.buttonLetsGo, style: textTheme.button),
                 ),
               ),
             ],
