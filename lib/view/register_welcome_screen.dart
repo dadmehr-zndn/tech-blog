@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/view/register_successful_screen.dart';
 import 'package:validators/validators.dart';
 
 class RegisterWelcomeScreen extends StatelessWidget {
@@ -44,75 +45,31 @@ class RegisterWelcomeScreen extends StatelessWidget {
               // Button "Let's go"
               ElevatedButton(
                 onPressed: () {
-                  // Display BottomSheet
-                  showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (context) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom),
-                        child: Container(
-                          height: size.height / 2.57,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              //TODO: check for the exact radius
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
+                  // Display Email BottomSheet
+                  _showRegisterScreenBottomSheet(
+                    context,
+                    size,
+                    textTheme,
+                    headerText: Strings.plsEnterYourEmail,
+                    hintText: Strings.techBlogEmail,
+                    onPressed: () {
+                      Navigator.pop(context);
+
+                      //Display Code BottomSheet
+                      _showRegisterScreenBottomSheet(
+                        context,
+                        size,
+                        textTheme,
+                        headerText: Strings.enterTheActivationCode,
+                        hintText: Strings.codeTextHint,
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RegisterSuccessfulScreen(),
                             ),
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                // لطفا ایمیلت را وارد کن
-                                Text(
-                                  Strings.plsEnterYourEmail,
-                                  style: textTheme.bodyText1,
-                                ),
-
-                                SizedBox(height: size.height / 33.81),
-
-                                // Email TextField
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: size.width / 5.7),
-                                  child: SizedBox(
-                                    height: size.height / 17,
-                                    child: TextField(
-                                      onChanged: (value) {
-                                        if (isEmail(value)) {
-                                          print(value);
-                                        }
-                                      },
-                                      textAlign: TextAlign.center,
-                                      textAlignVertical:
-                                          TextAlignVertical.bottom,
-                                      decoration: InputDecoration(
-                                        hintText: Strings.techBlogEmail,
-                                        hintStyle: textTheme.subtitle2,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-
-                                SizedBox(height: size.height / 16.08),
-
-                                // Button Continue
-                                ElevatedButton(
-                                  onPressed: () {
-                                    //TODO: implement
-                                  },
-                                  child: Text(
-                                    Strings.buttonContinue,
-                                    style: textTheme.button,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                          );
+                        },
                       );
                     },
                   );
@@ -123,6 +80,84 @@ class RegisterWelcomeScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<dynamic> _showRegisterScreenBottomSheet(
+    BuildContext context,
+    Size size,
+    TextTheme textTheme, {
+    required String headerText,
+    required String hintText,
+    required Function() onPressed,
+  }) {
+    return showModalBottomSheet(
+      barrierColor: SolidColors.pageBackgroundOverlay,
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Container(
+            height: size.height / 2.57,
+            width: size.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                //TODO: check for the exact radius
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // لطفا ایمیلت را وارد کن
+                  Text(
+                    headerText,
+                    style: textTheme.bodyText1,
+                  ),
+
+                  SizedBox(height: size.height / 33.81),
+
+                  // Email TextField
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: size.width / 5.7),
+                    child: SizedBox(
+                      height: size.height / 17,
+                      child: TextField(
+                        onChanged: (value) {
+                          if (isEmail(value)) {
+                            print(value);
+                          }
+                        },
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(bottom: 0.0),
+                          hintText: hintText,
+                          hintStyle: textTheme.subtitle2,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: size.height / 16.08),
+
+                  // Button Continue
+                  ElevatedButton(
+                    onPressed: onPressed,
+                    child: Text(
+                      Strings.buttonContinue,
+                      style: textTheme.button,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

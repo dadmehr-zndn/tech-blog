@@ -51,7 +51,7 @@ class Strings {
   static const String buttonContinue = 'ادامه';
   static const String techBlogEmail = 'techblog@gmail.com';
   static const String enterTheActivationCode = 'کد فعال سازی رو وارد کن ';
-  static const String textFieldStart = '******';
+  static const String codeTextHint = '******';
   static const String congratsEmailSuccess =
       '''تبریک میگم ، ایمیل با موفقیت تایید شد
 لطفا اطلاعات ثبت نام رو کامل کن''';
