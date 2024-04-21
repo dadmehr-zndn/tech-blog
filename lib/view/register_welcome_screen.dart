@@ -17,9 +17,9 @@ class RegisterWelcomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
 
-    return SizedBox(
-      child: Scaffold(
-        body: Center(
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

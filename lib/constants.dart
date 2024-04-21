@@ -157,7 +157,7 @@ class SolidColors {
   static const Color articleTitle = Color(0xff333333);
   static const Color timeCreated = Color(0xff9B9B9B);
   static const Color articleBody = Color(0xff484848);
-  static const Color labelTagInside = Color(0xffF2F2F2);
+  static const Color hashTagSelected = Color(0xffF2F2F2);
   static const Color textLabelTagInside = Color(0xff252525);
   static const Color showSectionTitle = Color(0xff286BB8);
 

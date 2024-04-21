@@ -44,6 +44,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/down_arrow.png
+  AssetGenImage get downArrow =>
+      const AssetGenImage('assets/images/down_arrow.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -55,7 +59,7 @@ class $AssetsImagesGen {
   SvgGenImage get techBot => const SvgGenImage('assets/images/tech_bot.svg');
 
   /// List of all assets
-  List<dynamic> get values => [logo, posterTest, techBot];
+  List<dynamic> get values => [downArrow, logo, posterTest, techBot];
 }
 
 class Assets {

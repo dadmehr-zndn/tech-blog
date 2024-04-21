@@ -19,7 +19,10 @@ List<HashTagModel> hashTagsList = [
   HashTagModel(title: 'Asp.net'),
   HashTagModel(title: 'Dart'),
   HashTagModel(title: 'React Native'),
+  HashTagModel(title: 'Python'),
 ];
+
+Set<HashTagModel> hashTagsCategoriesSelected = {};
 
 List<BlogModel> blogList = [
   BlogModel(
