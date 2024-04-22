@@ -134,7 +134,7 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: SolidColors.hashTagSelected,
+                            color: SolidColors.surface,
                             //TODO: exact radius
                             borderRadius: BorderRadius.circular(22),
                           ),
