@@ -4,6 +4,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tech_blog/components/profile_divider.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/view/profile_screen.dart';
@@ -21,6 +22,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int selectedScreenIndex = 0;
+  final _scaffolKkey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,84 @@ class _MainScreenState extends State<MainScreen> {
     var podcastPostHeight = size.height / 4.2;
 
     return Scaffold(
+      key: _scaffolKkey,
+      drawer: Drawer(
+        backgroundColor: SolidColors.drawer,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width / 9.74,
+            vertical: size.height / 13.92,
+          ),
+          child: ListView(
+            children: [
+              // DrawerHeader(
+              //   child: Center(
+              //     child: Assets.images.logo.image(height: size.height / 9.17),
+              //   ),
+              // ),
+
+              Center(
+                child: Assets.images.logo.image(height: size.height / 9.17),
+              ),
+              SizedBox(height: size.height / 9.33),
+              Divider(
+                color: SolidColors.divideHorizontalLine,
+                thickness: 0.5,
+              ),
+              ListTile(
+                onTap: () {},
+                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                title: Text(
+                  Strings.userProfile,
+                  style: TextStyle(
+                      color: SolidColors.drawerMenuTitle, fontSize: 12.5),
+                ),
+              ),
+              Divider(
+                color: SolidColors.divideHorizontalLine,
+                thickness: 0.5,
+              ),
+              ListTile(
+                onTap: () {},
+                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                title: Text(
+                  Strings.aboutTechBlog,
+                  style: TextStyle(
+                      color: SolidColors.drawerMenuTitle, fontSize: 12.5),
+                ),
+              ),
+              Divider(
+                color: SolidColors.divideHorizontalLine,
+                thickness: 0.5,
+              ),
+              ListTile(
+                onTap: () {},
+                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                title: Text(
+                  Strings.sharingTechBlog,
+                  style: TextStyle(
+                      color: SolidColors.drawerMenuTitle, fontSize: 12.5),
+                ),
+              ),
+              Divider(
+                color: SolidColors.divideHorizontalLine,
+                thickness: 0.5,
+              ),
+              ListTile(
+                onTap: () {},
+                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                title: Text(
+                  Strings.techBlogOnGithub,
+                  style: TextStyle(
+                      color: SolidColors.drawerMenuTitle, fontSize: 12.5),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
         backgroundColor: SolidColors.appbar,
         title: Padding(
@@ -46,9 +125,12 @@ class _MainScreenState extends State<MainScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(
-                Icons.menu,
-                size: size.width / 17,
+              IconButton(
+                onPressed: () => _scaffolKkey.currentState!.openDrawer(),
+                icon: Icon(
+                  Icons.menu,
+                  size: size.width / 17,
+                ),
               ),
               Assets.images.logo.image(height: size.height / 13.63),
               Transform.scale(

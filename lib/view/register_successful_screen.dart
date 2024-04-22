@@ -1,6 +1,8 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,6 +13,7 @@ import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
 import 'package:tech_blog/models/hashtag_model.dart';
+import 'package:tech_blog/models/models.dart';
 
 class RegisterSuccessfulScreen extends StatefulWidget {
   const RegisterSuccessfulScreen({super.key});
@@ -22,6 +25,8 @@ class RegisterSuccessfulScreen extends StatefulWidget {
 
 class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
   final _listViewController = ScrollController();
+  bool _isSelected = false;
+  HashTagModel? _selectedTwice;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +75,7 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
               SizedBox(
                 height: size.height / 9.68,
                 child: MasonryGridView.builder(
-                  physics: PageScrollPhysics(),
+                  physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemCount: hashTagsList.length,
                   mainAxisSpacing: size.width / 18.75,
@@ -81,21 +86,36 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        setState(
-                          () {
-                            // * I used Set in fake_data.dart to manage preventing of duplicate tags selected
+                        if (!hashTagsCategoriesSelected
+                            .contains(hashTagsList[index])) {
+                          setState(() {
+                            /// I used Set in fake_data.dart to manage preventing of duplicate tags selected
                             hashTagsCategoriesSelected.add(hashTagsList[index]);
-                          },
-                        );
-                        if (_listViewController.hasClients) {
-                          final position =
-                              _listViewController.position.maxScrollExtent;
-                          _listViewController.animateTo(
-                            position + hashTagsList[index].title.length + 120,
-                            duration: Duration(milliseconds: 400),
-                            curve: Curves.easeIn,
+                          });
+
+                          /// Here I'm moving to the end of the list only if the item is not already in it
+                          if (_listViewController.hasClients) {
+                            final position =
+                                _listViewController.position.maxScrollExtent;
+                            _listViewController.animateTo(
+                              position + hashTagsList[index].title.length + 120,
+                              duration: Duration(milliseconds: 400),
+                              curve: Curves.easeIn,
+                            );
+                          }
+                        } else {
+                          setState(() {
+                            _selectedTwice = hashTagsList[index];
+                          });
+
+                          Future.delayed(
+                            const Duration(seconds: 1),
+                            () => setState(() {
+                              _selectedTwice = null;
+                            }),
                           );
                         }
+                        // Shaking the Selected Container Tag to Warn the user it already exists
                       },
                       child: Hashtag(
                         size: size,
@@ -132,9 +152,13 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                             hashTagsCategoriesSelected.elementAt(index),
                           ),
                         ),
-                        child: Container(
+                        child: AnimatedContainer(
+                          duration: Duration(microseconds: 300),
                           decoration: BoxDecoration(
-                            color: SolidColors.surface,
+                            color: _selectedTwice ==
+                                    hashTagsCategoriesSelected.elementAt(index)
+                                ? Colors.red.withOpacity(0.7)
+                                : SolidColors.surface,
                             //TODO: exact radius
                             borderRadius: BorderRadius.circular(22),
                           ),

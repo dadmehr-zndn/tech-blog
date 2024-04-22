@@ -143,6 +143,7 @@ class SolidColors {
   static const Color articleSubTitle = Color(0xff616161);
   static const Color podcastCreator = Color(0xffC5C5C5);
   static const Color drawerMenuTitle = Color(0xff101010);
+  static const Color drawer = Color(0xffffffff);
   static const Color textHint = Color(0xffDBDBDB);
   static const Color border = Color(0xff707070);
 
