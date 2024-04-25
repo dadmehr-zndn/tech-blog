@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Strings {
+  static const String shareTechblogDialog =
+      'you can use this amazing app dude!';
+  static const String techblogGithubUrl =
+      'https://github.com/dadmehr-zndn/tech-blog/tree/master';
+  static const String aboutTechblogUrl = 'https://flutter.dev/';
+
   // main-1
   static const String changeProfilePhoto = 'ویرایش عکس پروفایل';
   static const String myFavouriteArticles = 'مقالات مورد علاقه من';

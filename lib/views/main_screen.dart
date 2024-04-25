@@ -3,11 +3,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/views/profile_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
 import 'home_screen.dart';
+import '../components/functions.dart';
 
 enum Screen { home, profile }
 
@@ -58,7 +60,10 @@ class _MainScreenState extends State<MainScreen> {
                 thickness: 0.5,
               ),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  _scaffolKkey.currentState!.closeDrawer();
+                  selectedScreenIndex.value = 2;
+                },
                 splashColor: SolidColors.primaryColor.withOpacity(0.1),
                 title: Text(
                   Strings.userProfile,
@@ -71,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
                 thickness: 0.5,
               ),
               ListTile(
-                onTap: () {},
+                onTap: () => launchMyUrl(Strings.aboutTechblogUrl),
                 splashColor: SolidColors.primaryColor.withOpacity(0.1),
                 title: Text(
                   Strings.aboutTechBlog,
@@ -84,7 +89,8 @@ class _MainScreenState extends State<MainScreen> {
                 thickness: 0.5,
               ),
               ListTile(
-                onTap: () {},
+                onTap: () async =>
+                    await Share.share(Strings.shareTechblogDialog),
                 splashColor: SolidColors.primaryColor.withOpacity(0.1),
                 title: Text(
                   Strings.sharingTechBlog,
@@ -97,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
                 thickness: 0.5,
               ),
               ListTile(
-                onTap: () {},
+                onTap: () => launchMyUrl(Strings.techblogGithubUrl),
                 splashColor: SolidColors.primaryColor.withOpacity(0.1),
                 title: Text(
                   Strings.techBlogOnGithub,
