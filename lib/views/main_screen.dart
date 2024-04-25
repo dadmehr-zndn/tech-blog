@@ -1,10 +1,8 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, deprecated_member_use
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:tech_blog/components/profile_divider.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/views/profile_screen.dart';
@@ -14,14 +12,14 @@ import 'home_screen.dart';
 enum Screen { home, profile }
 
 class MainScreen extends StatefulWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int selectedScreenIndex = 0;
+  RxInt selectedScreenIndex = 0.obs;
   final _scaffolKkey = GlobalKey<ScaffoldState>();
 
   @override
@@ -125,9 +123,9 @@ class _MainScreenState extends State<MainScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                onPressed: () => _scaffolKkey.currentState!.openDrawer(),
-                icon: Icon(
+              GestureDetector(
+                onTap: () => _scaffolKkey.currentState!.openDrawer(),
+                child: Icon(
                   Icons.menu,
                   size: size.width / 17,
                 ),
@@ -147,27 +145,29 @@ class _MainScreenState extends State<MainScreen> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: IndexedStack(
-              index: selectedScreenIndex,
-              children: [
-                HomeScreen(
-                  size: size,
-                  sidePaddings: sidePaddings,
-                  textTheme: textTheme,
-                  hastagPadding: hastagPadding,
-                  blogPostHeight: blogPostHeight,
-                  podcastPostHeight: podcastPostHeight,
-                ),
-                RegisterWelcomeScreen(),
-                ProfileScreen(
-                  size: size,
-                  sidePaddings: sidePaddings,
-                  textTheme: textTheme,
-                  hastagPadding: hastagPadding,
-                  blogPostHeight: blogPostHeight,
-                  podcastPostHeight: podcastPostHeight,
-                ),
-              ],
+            child: Obx(
+              () => IndexedStack(
+                index: selectedScreenIndex.value,
+                children: [
+                  HomeScreen(
+                    size: size,
+                    sidePaddings: sidePaddings,
+                    textTheme: textTheme,
+                    hastagPadding: hastagPadding,
+                    blogPostHeight: blogPostHeight,
+                    podcastPostHeight: podcastPostHeight,
+                  ),
+                  RegisterWelcomeScreen(),
+                  ProfileScreen(
+                    size: size,
+                    sidePaddings: sidePaddings,
+                    textTheme: textTheme,
+                    hastagPadding: hastagPadding,
+                    blogPostHeight: blogPostHeight,
+                    podcastPostHeight: podcastPostHeight,
+                  ),
+                ],
+              ),
             ),
           ),
 
@@ -187,7 +187,8 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     );
                   }
-                  setState(() => selectedScreenIndex = index);
+
+                  selectedScreenIndex.value = index;
                 }),
           )
         ],
