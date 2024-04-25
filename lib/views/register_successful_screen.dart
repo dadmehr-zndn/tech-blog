@@ -104,6 +104,7 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                             );
                           }
                         } else {
+                          /// Check if the tag already selected make it red for 1 second
                           setState(() {
                             _selectedTwice = hashTagsList[index];
                           });

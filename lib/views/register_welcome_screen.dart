@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/view/register_successful_screen.dart';
+import 'package:tech_blog/views/register_successful_screen.dart';
 import 'package:validators/validators.dart';
 
 class RegisterWelcomeScreen extends StatelessWidget {

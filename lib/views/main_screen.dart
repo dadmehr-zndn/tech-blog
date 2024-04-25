@@ -7,8 +7,8 @@ import 'package:flutter/widgets.dart';
 import 'package:tech_blog/components/profile_divider.dart';
 import 'package:tech_blog/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/view/profile_screen.dart';
-import 'package:tech_blog/view/register_welcome_screen.dart';
+import 'package:tech_blog/views/profile_screen.dart';
+import 'package:tech_blog/views/register_welcome_screen.dart';
 import 'home_screen.dart';
 
 enum Screen { home, profile }
