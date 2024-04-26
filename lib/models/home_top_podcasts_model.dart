@@ -1,9 +1,9 @@
-class TopArticlesModel {
-  TopArticlesModel({
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+class HomeTopPodcastsModel {
+  HomeTopPodcastsModel({
     required this.id,
     required this.title,
-    required this.image,
-    required this.catId,
+    required this.poster,
     required this.catName,
     required this.author,
     required this.view,
@@ -13,19 +13,17 @@ class TopArticlesModel {
 
   String? id;
   String? title;
-  String? image;
-  String? catId;
+  String? poster;
   String? catName;
   String? author;
   String? view;
   String? status;
   String? createdAt;
 
-  TopArticlesModel.fromJson(Map<String, dynamic> json) {
+  HomeTopPodcastsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     id = json['title'];
-    id = json['image'];
-    id = json['catId'];
+    id = json['poster'];
     id = json['catName'];
     id = json['author'];
     id = json['view'];
