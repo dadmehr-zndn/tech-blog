@@ -1,3 +1,5 @@
+import 'package:tech_blog/constants/api_constants.dart';
+
 class HomeTopArticlesModel {
   HomeTopArticlesModel({
     required this.id,
@@ -23,13 +25,13 @@ class HomeTopArticlesModel {
 
   HomeTopArticlesModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    id = json['title'];
-    id = json['image'];
-    id = json['catId'];
-    id = json['catName'];
-    id = json['author'];
-    id = json['view'];
-    id = json['status'];
-    id = json['createdAt'];
+    title = json['title'];
+    image = ApiConstants.baseDlUrl + json['image'];
+    catId = json['catId'];
+    catName = json['catName'];
+    author = json['author'];
+    view = json['view'];
+    status = json['status'];
+    createdAt = json['createdAt'];
   }
 }

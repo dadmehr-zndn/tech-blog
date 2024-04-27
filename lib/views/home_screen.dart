@@ -4,13 +4,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/components/hashtag.dart';
-import 'package:tech_blog/constants.dart';
+import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({
+  HomeScreen({
     super.key,
     required this.size,
     required this.sidePaddings,
@@ -27,8 +29,12 @@ class HomeScreen extends StatelessWidget {
   final double blogPostHeight;
   final double podcastPostHeight;
 
+  HomeScreenController homeScreenController = Get.put(HomeScreenController());
+
   @override
   Widget build(BuildContext context) {
+    homeScreenController.getHomeItems();
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(bottom: size.height / 6.5),
@@ -53,12 +59,7 @@ class HomeScreen extends StatelessWidget {
               textTheme: textTheme,
             ),
             SizedBox(height: size.height / 46.21),
-            HomePageHottestArticlesList(
-              blogPostHeight: blogPostHeight,
-              sidePaddings: sidePaddings,
-              size: size,
-              textTheme: textTheme,
-            ),
+            homePageHottestArticlesList(),
             SizedBox(height: size.height / 14.76),
             HomePageViewHottestPodcasts(
               sidePaddings: sidePaddings,
@@ -73,6 +74,131 @@ class HomeScreen extends StatelessWidget {
               textTheme: textTheme,
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget homePageHottestArticlesList() {
+    return SizedBox(
+      height: blogPostHeight,
+      child: Obx(
+        () => ListView.builder(
+          scrollDirection: Axis.horizontal,
+          physics: BouncingScrollPhysics(),
+          itemCount: homeScreenController.topArticlesList.length,
+          itemBuilder: (context, index) {
+            print(index);
+            return Padding(
+              padding: EdgeInsets.only(
+                  right: index == 0 ? sidePaddings : size.width / 22.34),
+              child: SizedBox(
+                width: size.width / 2.66,
+                child: Column(
+                  children: [
+                    // Blog Image & Creator & Views
+                    Stack(
+                      children: [
+                        // Blog Image
+                        Container(
+                          height: size.height / 5.53,
+                          width: size.width / 2.66,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            image: DecorationImage(
+                              image: NetworkImage(homeScreenController
+                                  .topArticlesList[index].image!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+
+                        // Gradient
+                        Positioned(
+                          bottom: 0,
+                          child: Container(
+                            height: size.height / 11.03,
+                            width: size.width / 2.66,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(18),
+                                  bottomLeft: Radius.circular(18)),
+                              gradient: LinearGradient(
+                                colors: GradientColors.list,
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // Creator & Views
+                        Positioned(
+                          bottom: size.height / 87.95,
+                          child: SizedBox(
+                            width: size.width / 2.66,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width / 29.74),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    homeScreenController
+                                        .topArticlesList[index].author!,
+                                    style: textTheme.headline2
+                                        ?.copyWith(fontSize: 13),
+                                  ),
+
+                                  // views
+                                  SizedBox(
+                                    width: size.width / 9,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      // crossAxisAlignment:
+                                      //     CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          homeScreenController
+                                              .topArticlesList[index].view!,
+                                          style: textTheme.headline2
+                                              ?.copyWith(fontSize: 13),
+                                        ),
+                                        Icon(
+                                          Icons.remove_red_eye_sharp,
+                                          color: SolidColors.icon,
+                                          size: size.width / 30,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: size.height / 82.72),
+
+                    Text(
+                      homeScreenController.topArticlesList[index].title!,
+                      style: textTheme.headline2!.copyWith(
+                        color: SolidColors.articleBody,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15.3,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -166,140 +292,6 @@ class HomePageViewHottestPodcasts extends StatelessWidget {
             style: textTheme.headline3,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class HomePageHottestArticlesList extends StatelessWidget {
-  const HomePageHottestArticlesList({
-    super.key,
-    required this.blogPostHeight,
-    required this.sidePaddings,
-    required this.size,
-    required this.textTheme,
-  });
-
-  final double blogPostHeight;
-  final double sidePaddings;
-  final Size size;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: blogPostHeight,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
-        itemCount: blogList.length - 1,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.only(
-                right: index == 0 ? sidePaddings : size.width / 22.34),
-            child: SizedBox(
-              width: size.width / 2.66,
-              child: Column(
-                children: [
-                  // Blog Image & Creator & Views
-                  Stack(
-                    children: [
-                      // Blog Image
-                      Container(
-                        height: size.height / 5.53,
-                        width: size.width / 2.66,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          image: DecorationImage(
-                            image: NetworkImage(blogList[index].imagePath),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-
-                      // Gradient
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          height: size.height / 11.03,
-                          width: size.width / 2.66,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(18),
-                                bottomLeft: Radius.circular(18)),
-                            gradient: LinearGradient(
-                              colors: GradientColors.list,
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      // Creator & Views
-                      Positioned(
-                        bottom: size.height / 87.95,
-                        child: SizedBox(
-                          width: size.width / 2.66,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width / 29.74),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  blogList[index].creator,
-                                  style: textTheme.headline2
-                                      ?.copyWith(fontSize: 15),
-                                ),
-
-                                // views
-                                SizedBox(
-                                  width: size.width / 10,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    // crossAxisAlignment:
-                                    //     CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        blogList[index].views,
-                                        style: textTheme.headline2
-                                            ?.copyWith(fontSize: 15),
-                                      ),
-                                      Icon(
-                                        Icons.remove_red_eye_sharp,
-                                        color: SolidColors.icon,
-                                        size: size.width / 30,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: size.height / 82.72),
-
-                  Text(
-                    blogList[index].title,
-                    style: textTheme.headline2!.copyWith(
-                      color: SolidColors.articleBody,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15.3,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
       ),
     );
   }

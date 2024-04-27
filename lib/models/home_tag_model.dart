@@ -1,5 +1,5 @@
-class HomeTagModel {
-  HomeTagModel({
+class HomeTagsModel {
+  HomeTagsModel({
     required this.id,
     required this.title,
   });
@@ -7,7 +7,7 @@ class HomeTagModel {
   String? id;
   String? title;
 
-  HomeTagModel.fromJson(Map<String, dynamic> json) {
+  HomeTagsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     id = json['title'];
   }
