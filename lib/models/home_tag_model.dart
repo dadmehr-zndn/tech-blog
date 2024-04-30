@@ -9,6 +9,6 @@ class HomeTagsModel {
 
   HomeTagsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    id = json['title'];
+    title = json['title'];
   }
 }

@@ -1,4 +1,5 @@
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/models/home_tag_model.dart';
 
 import 'models.dart';
 
@@ -22,7 +23,7 @@ List<HashTagModel> hashTagsList = [
   HashTagModel(title: 'Python'),
 ];
 
-Set<HashTagModel> hashTagsCategoriesSelected = {};
+Set<HomeTagsModel> hashTagsCategoriesSelected = {};
 
 List<BlogModel> blogList = [
   BlogModel(

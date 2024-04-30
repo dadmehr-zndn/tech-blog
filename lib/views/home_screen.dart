@@ -44,12 +44,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     homeScreenPoster(),
                     SizedBox(height: size.height / 20.623),
-                    HomePageHashtagList(
-                      size: size,
-                      sidePaddings: sidePaddings,
-                      hastagPadding: hastagPadding,
-                      textTheme: textTheme,
-                    ),
+                    homePageHashTagList(),
                     SizedBox(height: size.height / 17.93),
                     HomePageViewHottestArticles(
                       sidePaddings: sidePaddings,
@@ -386,6 +381,29 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget homePageHashTagList() {
+    return SizedBox(
+      height: size.height / 22.98,
+      child: ListView.builder(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: homeScreenController.tagsList.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.only(
+              right: index == 0 ? sidePaddings : hastagPadding,
+            ),
+            child: Hashtag(
+              size: size,
+              textTheme: textTheme,
+              index: index,
+            ),
+          );
+        },
+      ),
+    );
+  }
 }
 
 class HomePageViewHottestPodcasts extends StatelessWidget {
@@ -449,45 +467,6 @@ class HomePageViewHottestArticles extends StatelessWidget {
             style: textTheme.headline3,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class HomePageHashtagList extends StatelessWidget {
-  const HomePageHashtagList({
-    super.key,
-    required this.size,
-    required this.sidePaddings,
-    required this.hastagPadding,
-    required this.textTheme,
-  });
-
-  final Size size;
-  final double sidePaddings;
-  final double hastagPadding;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: size.height / 22.98,
-      child: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: hashTagsList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.only(
-              right: index == 0 ? sidePaddings : hastagPadding,
-            ),
-            child: Hashtag(
-              size: size,
-              textTheme: textTheme,
-              index: index,
-            ),
-          );
-        },
       ),
     );
   }

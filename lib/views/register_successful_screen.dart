@@ -1,18 +1,15 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/components/hashtag.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/fake_data.dart';
-import 'package:tech_blog/models/hashtag_model.dart';
+import 'package:tech_blog/models/home_tag_model.dart';
 import 'package:tech_blog/models/models.dart';
 
 class RegisterSuccessfulScreen extends StatefulWidget {
@@ -25,8 +22,9 @@ class RegisterSuccessfulScreen extends StatefulWidget {
 
 class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
   final _listViewController = ScrollController();
-  bool _isSelected = false;
-  HashTagModel? _selectedTwice;
+  HomeTagsModel? _selectedTwice;
+
+  var tagController = Get.find<HomeScreenController>().tagsList;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +75,7 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                 child: MasonryGridView.builder(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: hashTagsList.length,
+                  itemCount: tagController.length,
                   mainAxisSpacing: size.width / 18.75,
                   crossAxisSpacing: size.height / 65.46,
                   gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
@@ -87,10 +85,11 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                     return GestureDetector(
                       onTap: () {
                         if (!hashTagsCategoriesSelected
-                            .contains(hashTagsList[index])) {
+                            .contains(tagController[index])) {
                           setState(() {
                             /// I used Set in fake_data.dart to manage preventing of duplicate tags selected
-                            hashTagsCategoriesSelected.add(hashTagsList[index]);
+                            hashTagsCategoriesSelected
+                                .add(tagController[index]);
                           });
 
                           /// Here I'm moving to the end of the list only if the item is not already in it
@@ -106,7 +105,7 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                         } else {
                           /// Check if the tag already selected make it red for 1 second
                           setState(() {
-                            _selectedTwice = hashTagsList[index];
+                            _selectedTwice = tagController[index];
                           });
 
                           Future.delayed(
@@ -170,7 +169,7 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
                               child: Text(
                                 hashTagsCategoriesSelected
                                     .elementAt(index)
-                                    .title,
+                                    .title!,
                                 style: textTheme.headline4!.copyWith(
                                   color: SolidColors.textLabelTagInside,
                                   fontSize: 13,

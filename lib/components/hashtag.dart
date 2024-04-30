@@ -1,11 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/fake_data.dart';
 
 class Hashtag extends StatelessWidget {
   const Hashtag({
@@ -49,7 +48,7 @@ class Hashtag extends StatelessWidget {
 
             // hashtag title
             Text(
-              hashTagsList[index].title,
+              Get.find<HomeScreenController>().tagsList[index].title!,
               style: textTheme.headline2,
             ),
           ],

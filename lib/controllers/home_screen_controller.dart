@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/models/hashtag_model.dart';
 import 'package:tech_blog/models/home_poster_model.dart';
 import 'package:tech_blog/models/home_tag_model.dart';
 import 'package:tech_blog/models/home_top_articles_model.dart';
@@ -33,6 +34,14 @@ class HomeScreenController extends GetxController {
         (element) {
           topPodcastsList.add(
             HomeTopPodcastsModel.fromJson(element),
+          );
+        },
+      );
+
+      response.data['tags'].forEach(
+        (element) {
+          tagsList.add(
+            HomeTagsModel.fromJson(element),
           );
         },
       );
