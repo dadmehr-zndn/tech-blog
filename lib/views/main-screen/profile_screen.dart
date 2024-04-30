@@ -6,7 +6,6 @@ import 'package:tech_blog/components/profile_divider.dart';
 import 'package:tech_blog/components/profile_text_button.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/fake_data.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({

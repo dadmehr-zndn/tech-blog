@@ -9,10 +9,10 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/services/dio_service.dart';
-import 'package:tech_blog/views/profile_screen.dart';
+import 'package:tech_blog/views/main-screen/profile_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
 import 'home_screen.dart';
-import '../components/functions.dart';
+import '../../components/functions.dart';
 
 enum Screen { home, profile }
 

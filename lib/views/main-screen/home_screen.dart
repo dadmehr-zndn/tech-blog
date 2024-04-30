@@ -11,7 +11,7 @@ import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
 
-import '../components/loading_spinkit.dart';
+import '../../components/loading_spinkit.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({

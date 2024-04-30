@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:flutter/services.dart';
+import 'package:tech_blog/views/articles_list_screen.dart';
 import 'package:tech_blog/views/splash_screen.dart';
 // import 'gen/fonts.gen.dart';
 // import 'gen/assets.gen.dart';
@@ -133,7 +134,7 @@ class MyApp extends StatelessWidget {
       ],
 
       //TODO: change it back to splash
-      home: SplashScreen(),
+      home: ArticlesListScreen(),
     );
   }
 }
