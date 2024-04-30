@@ -7,29 +7,37 @@ import 'package:tech_blog/models/home_tag_model.dart';
 import 'package:tech_blog/models/home_top_articles_model.dart';
 import 'package:tech_blog/models/home_top_podcasts_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
+import 'package:tech_blog/views/home_screen.dart';
 
 class HomeScreenController extends GetxController {
-  late Rx<HomePosterModel> poster;
+  late Rx<HomePosterModel> homePoster;
   RxList<HomeTopArticlesModel> topArticlesList = RxList<HomeTopArticlesModel>();
   RxList<HomeTopPodcastsModel> topPodcastsList = RxList<HomeTopPodcastsModel>();
   RxList<HomeTagsModel> tagsList = RxList<HomeTagsModel>();
 
   getHomeItems() async {
+    // * This await is too important
     var response = await DioService().getMethod(ApiConstants.getHomeItems);
 
     //TODO: check here
-    int counter = 0;
     if (response.statusCode == 200) {
       response.data['top_visited'].forEach(
         (element) {
-          if (counter > response.data['top_visited'].lenght) return;
           topArticlesList.add(
             HomeTopArticlesModel.fromJson(element),
           );
-
-          counter++;
         },
       );
+
+      response.data['top_podcasts'].forEach(
+        (element) {
+          topPodcastsList.add(
+            HomeTopPodcastsModel.fromJson(element),
+          );
+        },
+      );
+
+      homePoster = HomePosterModel.fromJson(response.data['poster']).obs;
     }
   }
 

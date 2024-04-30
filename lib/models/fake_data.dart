@@ -330,4 +330,28 @@ List<PodcastModel> podcastList = [
         'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/00/31/4c/00314cb7-6716-d77a-d134-673ca137f476/mza_12390173946242352654.jpg/400x400bb.jpg',
     title: 'رادیو راه',
   ),
+  PodcastModel(
+    id: 5,
+    imageUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/00/31/4c/00314cb7-6716-d77a-d134-673ca137f476/mza_12390173946242352654.jpg/400x400bb.jpg',
+    title: 'رادیو راه',
+  ),
+  PodcastModel(
+    id: 5,
+    imageUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/00/31/4c/00314cb7-6716-d77a-d134-673ca137f476/mza_12390173946242352654.jpg/400x400bb.jpg',
+    title: 'رادیو راه',
+  ),
+  PodcastModel(
+    id: 5,
+    imageUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/00/31/4c/00314cb7-6716-d77a-d134-673ca137f476/mza_12390173946242352654.jpg/400x400bb.jpg',
+    title: 'رادیو راه',
+  ),
+  PodcastModel(
+    id: 5,
+    imageUrl:
+        'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/00/31/4c/00314cb7-6716-d77a-d134-673ca137f476/mza_12390173946242352654.jpg/400x400bb.jpg',
+    title: 'رادیو راه',
+  ),
 ];

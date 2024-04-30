@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:tech_blog/constants/api_constants.dart';
+
 class HomeTopPodcastsModel {
   HomeTopPodcastsModel({
     required this.id,
@@ -22,12 +24,12 @@ class HomeTopPodcastsModel {
 
   HomeTopPodcastsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    id = json['title'];
-    id = json['poster'];
-    id = json['catName'];
-    id = json['author'];
-    id = json['view'];
-    id = json['status'];
-    id = json['createdAt'];
+    title = json['title'];
+    poster = ApiConstants.baseDlUrl + json['poster'];
+    catName = json['catName'];
+    author = json['author'];
+    view = json['view'];
+    status = json['status'];
+    createdAt = json['createdAt'];
   }
 }

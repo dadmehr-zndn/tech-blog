@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 
 class DioService {
@@ -13,12 +11,10 @@ class DioService {
       url,
       options: Options(
         responseType: ResponseType.json,
-        method: 'Get',
+        method: 'GET',
       ),
     )
         .then((response) {
-      //TODO: delete the log
-      log(response.toString());
       return response;
     });
   }

@@ -1,3 +1,5 @@
+import 'package:tech_blog/constants/api_constants.dart';
+
 class HomePosterModel {
   HomePosterModel({
     required this.id,
@@ -11,7 +13,7 @@ class HomePosterModel {
 
   HomePosterModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    id = json['title'];
-    id = json['image'];
+    title = json['title'];
+    image = ApiConstants.baseDlUrl + json['image'];
   }
 }
