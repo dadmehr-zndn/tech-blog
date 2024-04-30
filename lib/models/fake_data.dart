@@ -303,7 +303,7 @@ List<PodcastModel> podcastList = [
   PodcastModel(
     id: 1,
     imageUrl:
-        'https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/19/0b/43/190b43a1-8049-a2f5-63f6-6ecc6325cc28/mza_17628134532651742707.jpg/400x400bb.jpg',
+        'https://is1-ssl.mzstastic.com/image/thumb/Podcasts112/v4/19/0b/43/190b43a1-8049-a2f5-63f6-6ecc6325cc28/mza_17628134532651742707.jpg/400x400bb.jpg',
     title: 'پادکست رخ',
   ),
   PodcastModel(
@@ -319,16 +319,16 @@ List<PodcastModel> podcastList = [
     title: 'هلی تاک',
   ),
   PodcastModel(
-    id: 4,
-    imageUrl:
-        'https://deow9bq0xqvbj.cloudfront.net/image-logo/14012996/3387942-1638971195865-e7f43246348cd.jpg',
-    title: 'کتابگرد',
-  ),
-  PodcastModel(
     id: 5,
     imageUrl:
         'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/00/31/4c/00314cb7-6716-d77a-d134-673ca137f476/mza_12390173946242352654.jpg/400x400bb.jpg',
     title: 'رادیو راه',
+  ),
+  PodcastModel(
+    id: 4,
+    imageUrl:
+        'https://deow9bq0xqvbj.cloudfront.net/image-logo/14012996/3387942-1638971195865-e7f43246348cd.jpg',
+    title: 'کتابگرد',
   ),
   PodcastModel(
     id: 5,

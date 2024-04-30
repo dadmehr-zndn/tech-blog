@@ -2,9 +2,9 @@ import 'package:tech_blog/constants/api_constants.dart';
 
 class HomePosterModel {
   HomePosterModel({
-    required this.id,
-    required this.title,
-    required this.image,
+    this.id,
+    this.title,
+    this.image,
   });
 
   String? id;
