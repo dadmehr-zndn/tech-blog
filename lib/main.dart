@@ -134,7 +134,7 @@ class MyApp extends StatelessWidget {
       ],
 
       //TODO: change it back to splash
-      home: ArticlesListScreen(),
+      home: SplashScreen(),
     );
   }
 }

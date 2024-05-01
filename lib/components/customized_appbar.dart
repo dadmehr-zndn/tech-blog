@@ -10,6 +10,7 @@ PreferredSize customizedAppBar(Size size, String title) {
     child: Padding(
       padding: EdgeInsets.only(top: size.height / 37.05),
       child: AppBar(
+        automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
         title: Padding(
           padding: EdgeInsets.fromLTRB(

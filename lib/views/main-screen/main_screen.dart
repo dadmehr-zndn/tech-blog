@@ -9,6 +9,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/services/dio_service.dart';
+import 'package:tech_blog/views/articles_list_screen.dart';
 import 'package:tech_blog/views/main-screen/profile_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
 import 'home_screen.dart';
@@ -110,6 +111,29 @@ class _MainScreenState extends State<MainScreen> {
                 splashColor: SolidColors.primaryColor.withOpacity(0.1),
                 title: Text(
                   Strings.techBlogOnGithub,
+                  style: TextStyle(
+                      color: SolidColors.drawerMenuTitle, fontSize: 12.5),
+                ),
+              ),
+
+              // TODO: Delete this two below widgets
+              Divider(
+                color: SolidColors.divideHorizontalLine,
+                thickness: 0.5,
+              ),
+              ListTile(
+                onTap: () {
+                  _scaffolKkey.currentState!.closeDrawer();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ArticlesListScreen(),
+                    ),
+                  );
+                },
+                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                title: Text(
+                  'Articles List',
                   style: TextStyle(
                       color: SolidColors.drawerMenuTitle, fontSize: 12.5),
                 ),
