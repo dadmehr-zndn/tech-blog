@@ -6,10 +6,11 @@ import 'package:tech_blog/constants/text_styles.dart';
 
 PreferredSize customizedAppBar(Size size, String title) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(size.height / 8),
+    preferredSize: Size.fromHeight(size.height / 8.5),
     child: Padding(
       padding: EdgeInsets.only(top: size.height / 37.05),
       child: AppBar(
+        scrolledUnderElevation: 0,
         title: Padding(
           padding: EdgeInsets.fromLTRB(
             size.width / 9.67,

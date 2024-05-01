@@ -27,11 +27,11 @@ class HomeTopArticlesModel {
     id = json['id'];
     title = json['title'];
     image = ApiConstants.baseDlUrl + json['image'];
-    catId = json['catId'];
-    catName = json['catName'];
+    catId = json['cat_id'];
+    catName = json['cat_name'];
     author = json['author'];
     view = json['view'];
     status = json['status'];
-    createdAt = json['createdAt'];
+    createdAt = json['created_at'];
   }
 }

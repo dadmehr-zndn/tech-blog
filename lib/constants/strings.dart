@@ -10,6 +10,7 @@ class Strings {
   static const String myFavouriteArticles = 'مقالات مورد علاقه من';
   static const String myFavouritePodcasts = 'پادکست های مورد علاقه من';
   static const String signOutOfTheAccount = 'خروج از حساب کاربری';
+  static const String view = 'بازدید';
 
   // mataleb - 4
   static const String favouriteArticles = 'مقالات مورد علاقه';
