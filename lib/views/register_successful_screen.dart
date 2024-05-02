@@ -22,7 +22,7 @@ class RegisterSuccessfulScreen extends StatefulWidget {
 
 class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
   final _listViewController = ScrollController();
-  HomeTagsModel? _selectedTwice;
+  TagModel? _selectedTwice;
 
   var tagController = Get.find<HomeScreenController>().tagsList;
 

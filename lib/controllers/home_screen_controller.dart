@@ -11,7 +11,7 @@ class HomeScreenController extends GetxController {
   Rx<HomePosterModel> homePoster = HomePosterModel().obs;
   RxList<HomeTopArticlesModel> topArticlesList = RxList<HomeTopArticlesModel>();
   RxList<HomeTopPodcastsModel> topPodcastsList = RxList<HomeTopPodcastsModel>();
-  RxList<HomeTagsModel> tagsList = RxList<HomeTagsModel>();
+  RxList<TagModel> tagsList = RxList<TagModel>();
 
   RxBool loading = RxBool(false);
 
@@ -41,7 +41,7 @@ class HomeScreenController extends GetxController {
       response.data['tags'].forEach(
         (element) {
           tagsList.add(
-            HomeTagsModel.fromJson(element),
+            TagModel.fromJson(element),
           );
         },
       );

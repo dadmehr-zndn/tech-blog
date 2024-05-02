@@ -27,7 +27,7 @@ class SolidColors {
   static const Color textHint = Color(0xffDBDBDB);
   static const Color border = Color(0xff707070);
 
-  static const Color usernameCreated = Color(0xff252525);
+  static const Color author = Color(0xff252525);
   static const Color podcastSelected = Color(0xffFF8B1A);
   static const Color podcastNotSelected = Color(0xff000000);
   static const Color podcastTime = Color(0xff747474);

@@ -5,4 +5,8 @@ class ApiConstants {
   static const String getHomeItems = '${baseUrl}home/?command=index';
   static const String getArticlesList =
       '${baseUrl}article/get.php?command=new&user_id=';
+
+// TODO: need change I guess
+  static const String getArticleInfo =
+      '${baseUrl}article/get.php?command=info&id=';
 }

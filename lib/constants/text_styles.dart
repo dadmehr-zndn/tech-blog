@@ -25,3 +25,27 @@ TextStyle articleCategoryTextStyle = const TextStyle(
   fontSize: 12,
   fontWeight: FontWeight.w300,
 );
+TextStyle authorTextStyle = const TextStyle(
+  color: SolidColors.author,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w300,
+);
+TextStyle createdAtTextStyle = const TextStyle(
+  color: SolidColors.timeCreated,
+  fontFamily: 'ArtinSharp',
+  fontSize: 12,
+  fontWeight: FontWeight.w300,
+);
+TextStyle articleSingleTitleTextStyle = const TextStyle(
+  color: SolidColors.articleTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 17,
+  fontWeight: FontWeight.w500,
+);
+TextStyle articleSingleContentTextStyle = const TextStyle(
+  color: SolidColors.articleTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 17,
+  fontWeight: FontWeight.w300,
+);

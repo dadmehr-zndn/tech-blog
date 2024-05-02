@@ -23,7 +23,7 @@ List<HashTagModel> hashTagsList = [
   HashTagModel(title: 'Python'),
 ];
 
-Set<HomeTagsModel> hashTagsCategoriesSelected = {};
+Set<TagModel> hashTagsCategoriesSelected = {};
 
 List<BlogModel> blogList = [
   BlogModel(
