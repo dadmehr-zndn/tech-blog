@@ -3,10 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:flutter/services.dart';
-import 'package:tech_blog/views/article_single_screen.dart';
-import 'package:tech_blog/views/articles_list_screen.dart';
 import 'package:tech_blog/views/splash_screen.dart';
 // import 'gen/fonts.gen.dart';
 // import 'gen/assets.gen.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
 
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Tech Blog',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -124,16 +123,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('fa'), // English
-      ],
-
+      locale: Locale('fa'),
       //TODO: change it back to splash
       home: SplashScreen(),
     );

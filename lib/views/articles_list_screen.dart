@@ -2,9 +2,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/customized_appbar.dart';
@@ -12,12 +10,17 @@ import 'package:tech_blog/components/image_error_widget.dart';
 import 'package:tech_blog/components/loading_spinkit.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/constants/text_styles.dart';
-import 'package:tech_blog/controllers/article_controller.dart';
+import 'package:tech_blog/controllers/article_list_controller.dart';
+import 'package:tech_blog/controllers/article_single_controller.dart';
+import 'package:tech_blog/views/article_single_screen.dart';
 
 class ArticlesListScreen extends StatelessWidget {
   ArticlesListScreen({super.key});
 
-  ArticleController articleController = Get.put(ArticleController());
+  ArticleListController articleListController =
+      Get.put(ArticleListController());
+  ArticleSingleController articleSingleController =
+      Get.put(ArticleSingleController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class ArticlesListScreen extends StatelessWidget {
             () => ListView.builder(
               physics: BouncingScrollPhysics(),
               scrollDirection: Axis.vertical,
-              itemCount: articleController.articlesList.length,
+              itemCount: articleListController.articlesList.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(
@@ -46,8 +49,8 @@ class ArticlesListScreen extends StatelessWidget {
                         SizedBox(
                           width: size.width / 4.17,
                           child: CachedNetworkImage(
-                            imageUrl:
-                                articleController.articlesList[index].image!,
+                            imageUrl: articleListController
+                                .articlesList[index].image!,
                             imageBuilder: (context, imageProvider) {
                               return Container(
                                 decoration: BoxDecoration(
@@ -72,13 +75,23 @@ class ArticlesListScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              width: size.width / 1.57,
-                              child: Text(
-                                articleController.articlesList[index].title!,
-                                style: articleTitleTextStyle,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
+                            GestureDetector(
+                              onTap: () async {
+                                articleSingleController.id.value =
+                                    articleListController
+                                        .articlesList[index].id!;
+                                await articleSingleController.getArticleInfo();
+                                Get.to(ArticleSingleScreen());
+                              },
+                              child: SizedBox(
+                                width: size.width / 1.57,
+                                child: Text(
+                                  articleListController
+                                      .articlesList[index].title!,
+                                  style: articleTitleTextStyle,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
                               ),
                             ),
                             SizedBox(height: size.height / 48.49),
@@ -87,7 +100,7 @@ class ArticlesListScreen extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Text(
-                                    articleController
+                                    articleListController
                                         .articlesList[index].author!,
                                     style: articleAuthorViewsTextStyle,
                                   ),
@@ -98,7 +111,8 @@ class ArticlesListScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: size.width / 91.07),
                                   Text(
-                                    articleController.articlesList[index].view!,
+                                    articleListController
+                                        .articlesList[index].view!,
                                     style: articleAuthorViewsTextStyle,
                                   ),
 
@@ -110,7 +124,7 @@ class ArticlesListScreen extends StatelessWidget {
                                       child: Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          articleController
+                                          articleListController
                                               .articlesList[index].catName!,
                                           style: articleCategoryTextStyle,
                                         ),

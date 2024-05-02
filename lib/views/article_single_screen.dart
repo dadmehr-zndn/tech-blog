@@ -3,7 +3,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/article_horizontal_list.dart';
 import 'package:tech_blog/components/image_error_widget.dart';
@@ -11,11 +10,8 @@ import 'package:tech_blog/components/loading_spinkit.dart';
 import 'package:tech_blog/constants/colors.dart';
 import 'package:tech_blog/constants/strings.dart';
 import 'package:tech_blog/constants/text_styles.dart';
-import 'package:tech_blog/controllers/article_controller.dart';
 import 'package:tech_blog/controllers/article_single_controller.dart';
-import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-
 import '../components/single_content_appbar.dart';
 
 class ArticleSingleScreen extends StatelessWidget {

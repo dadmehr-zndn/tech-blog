@@ -7,14 +7,16 @@ import 'package:tech_blog/services/dio_service.dart';
 class ArticleSingleController extends GetxController {
   Rx<ArticleSingleModel> articleSingleModel = Rx(ArticleSingleModel());
   RxList<TagModel> articleTags = RxList();
+  RxString id = RxString('');
 
   RxBool loading = RxBool(false);
 
   getArticleInfo() async {
+    print('id: $id');
     loading.value = true;
 
     var response =
-        await DioService().getMethod('${ApiConstants.getArticleInfo}3');
+        await DioService().getMethod('${ApiConstants.getArticleInfo}$id');
 
     if (response.statusCode == 200) {
       articleSingleModel =
@@ -26,19 +28,14 @@ class ArticleSingleController extends GetxController {
         ),
       );
 
-      print(response.statusCode);
-      print(response.data['info']);
-      print(response.data['tags']);
-
       loading.value = false;
     }
-    print(response.statusCode);
   }
 
-  @override
-  void onInit() {
-    super.onInit();
+  // @override
+  // void onInit() {
+  //   super.onInit();
 
-    getArticleInfo();
-  }
+  //   getArticleInfo();
+  // }
 }

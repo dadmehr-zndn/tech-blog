@@ -3,7 +3,7 @@ import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/models/home_top_articles_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
-class ArticleController extends GetxController {
+class ArticleListController extends GetxController {
   RxList<HomeTopArticlesModel> articlesList = RxList();
 
   getArticlesList() async {
