@@ -159,7 +159,7 @@ class ArticleSingleScreen extends StatelessWidget {
                                             .getArticlesListByTagId(tagId);
 
                                         Get.to(ArticlesListScreen(
-                                          appBarTitle: 'لیست $tagName',
+                                          appBarTitle: tagName,
                                         ));
                                       },
                                       child: Container(

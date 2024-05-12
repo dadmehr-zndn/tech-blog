@@ -10,6 +10,8 @@ class ArticleListController extends GetxController {
   getArticlesList() async {
     loading.value = true;
 
+    articlesList.clear();
+
     var response = await DioService().getMethod(ApiConstants.getArticlesList);
 
     if (response.statusCode == 200) {

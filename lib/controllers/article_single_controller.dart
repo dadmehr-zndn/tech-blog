@@ -4,6 +4,8 @@ import 'package:tech_blog/models/article_model.dart';
 import 'package:tech_blog/models/article_single_model.dart';
 import 'package:tech_blog/models/home_tag_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
+import 'package:tech_blog/views/article_single_screen.dart';
+import 'package:tech_blog/views/articles_list_screen.dart';
 
 class ArticleSingleController extends GetxController {
   Rx<ArticleSingleModel> articleSingleModel = ArticleSingleModel().obs;
@@ -31,7 +33,6 @@ class ArticleSingleController extends GetxController {
         );
       });
 
-      print('relatedArticles before: ${relatedArticles.length}');
       relatedArticles.clear();
       response.data['related'].forEach(
         (element) {
@@ -43,10 +44,11 @@ class ArticleSingleController extends GetxController {
           }
         },
       );
-      print('relatedArticles after: ${relatedArticles.length}');
 
       loading.value = false;
     }
+
+    Get.to(ArticleSingleScreen());
   }
 
   // @override

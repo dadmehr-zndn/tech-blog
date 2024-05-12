@@ -23,7 +23,7 @@ class Strings {
   static const String viewTheHottestPodcasts = 'مشاهده داغ ترین پادکست ها';
 
   // mataleb
-  static const String listOfArticles = 'لیست مقاله ها';
+  static const String listOfArticles = 'مقاله ها';
 
   //matelb-1
   static const String listOfPodcasts = 'لیست پادکست ها';

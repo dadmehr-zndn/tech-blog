@@ -37,7 +37,7 @@ class _ArticlesListScreenState extends State<ArticlesListScreen> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: customizedAppBar(size, title: widget.appBarTitle),
+        appBar: customizedAppBar(size, title: 'لیست ${widget.appBarTitle}'),
         body: SizedBox(
           child: Obx(
             () => articleListController.loading.value == false
@@ -56,7 +56,6 @@ class _ArticlesListScreenState extends State<ArticlesListScreen> {
                             articleSingleController.id.value =
                                 articleListController.articlesList[index].id!;
                             await articleSingleController.getArticleInfo();
-                            Get.to(ArticleSingleScreen());
                           },
                           child: SizedBox(
                             height: size.height / 7.73,

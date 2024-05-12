@@ -3,13 +3,17 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/article_horizontal_list.dart';
 import 'package:tech_blog/components/hashtag.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
+import 'package:tech_blog/views/articles_list_screen.dart';
 import '../../components/loading_spinkit.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -31,6 +35,8 @@ class HomeScreen extends StatelessWidget {
   final double podcastPostHeight;
 
   HomeScreenController homeScreenController = Get.put(HomeScreenController());
+  ArticleListController articleListController =
+      Get.put(ArticleListController());
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +51,17 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: size.height / 20.623),
                     homePageHashTagList(),
                     SizedBox(height: size.height / 17.93),
-                    HomePageViewHottestArticles(
-                      sidePaddings: sidePaddings,
-                      size: size,
-                      textTheme: textTheme,
+                    // HomePageViewHottestArticles
+                    GestureDetector(
+                      onTap: () {
+                        articleListController.getArticlesList();
+                        Get.to(ArticlesListScreen());
+                      },
+                      child: HomePageViewHottestArticles(
+                        sidePaddings: sidePaddings,
+                        size: size,
+                        textTheme: textTheme,
+                      ),
                     ),
                     SizedBox(height: size.height / 46.21),
                     homePageHottestArticlesList(),
@@ -62,7 +75,14 @@ class HomeScreen extends StatelessWidget {
                     homePageHottestPodcastsList(),
                   ],
                 )
-              : SizedBox.shrink(),
+              //TODO: change the loading
+              : SizedBox(
+                  height: Get.height,
+                  child: SpinKitChasingDots(
+                    size: 26,
+                    color: SolidColors.primaryColor,
+                  ),
+                ),
         ),
       ),
     );
@@ -266,10 +286,21 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               right: index == 0 ? sidePaddings : hastagPadding,
             ),
-            child: Hashtag(
-              size: size,
-              textTheme: textTheme,
-              index: index,
+            child: GestureDetector(
+              onTap: () async {
+                var tagId = homeScreenController.tagsList[index].id!;
+                articleListController.getArticlesListByTagId(tagId);
+                Get.to(
+                  ArticlesListScreen(
+                    appBarTitle: homeScreenController.tagsList[index].title!,
+                  ),
+                );
+              },
+              child: Hashtag(
+                size: size,
+                textTheme: textTheme,
+                index: index,
+              ),
             ),
           );
         },
