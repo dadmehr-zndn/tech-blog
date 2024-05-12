@@ -1,15 +1,14 @@
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
-import 'package:tech_blog/models/hashtag_model.dart';
+import 'package:tech_blog/models/article_model.dart';
 import 'package:tech_blog/models/home_poster_model.dart';
 import 'package:tech_blog/models/home_tag_model.dart';
-import 'package:tech_blog/models/home_top_articles_model.dart';
 import 'package:tech_blog/models/home_top_podcasts_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
 class HomeScreenController extends GetxController {
   Rx<HomePosterModel> homePoster = HomePosterModel().obs;
-  RxList<HomeTopArticlesModel> topArticlesList = RxList<HomeTopArticlesModel>();
+  RxList<ArticleModel> topArticlesList = RxList<ArticleModel>();
   RxList<HomeTopPodcastsModel> topPodcastsList = RxList<HomeTopPodcastsModel>();
   RxList<TagModel> tagsList = RxList<TagModel>();
 
@@ -25,7 +24,7 @@ class HomeScreenController extends GetxController {
       response.data['top_visited'].forEach(
         (element) {
           topArticlesList.add(
-            HomeTopArticlesModel.fromJson(element),
+            ArticleModel.fromJson(element),
           );
         },
       );

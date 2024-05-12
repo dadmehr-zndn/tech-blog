@@ -14,11 +14,20 @@ import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/controllers/article_single_controller.dart';
 import 'package:tech_blog/views/article_single_screen.dart';
 
-class ArticlesListScreen extends StatelessWidget {
-  ArticlesListScreen({super.key});
+class ArticlesListScreen extends StatefulWidget {
+  const ArticlesListScreen(
+      {super.key, this.appBarTitle = Strings.listOfArticles});
 
+  final String appBarTitle;
+
+  @override
+  State<ArticlesListScreen> createState() => _ArticlesListScreenState();
+}
+
+class _ArticlesListScreenState extends State<ArticlesListScreen> {
   ArticleListController articleListController =
       Get.put(ArticleListController());
+
   ArticleSingleController articleSingleController =
       Get.put(ArticleSingleController());
 
@@ -28,7 +37,7 @@ class ArticlesListScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: customizedAppBar(size, Strings.listOfArticles),
+        appBar: customizedAppBar(size, title: widget.appBarTitle),
         body: SizedBox(
           child: Obx(
             () => ListView.builder(
@@ -41,49 +50,48 @@ class ArticlesListScreen extends StatelessWidget {
                       right: size.width / 21.87,
                       bottom: size.height / 25.17,
                       top: index == 0 ? size.height / 36.72 : 0),
-                  child: SizedBox(
-                    height: size.height / 7.73,
-                    child: Row(
-                      children: [
-                        // article image
-                        SizedBox(
-                          width: size.width / 4.17,
-                          child: CachedNetworkImage(
-                            imageUrl: articleListController
-                                .articlesList[index].image!,
-                            imageBuilder: (context, imageProvider) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  // TODO: check for the radius
-                                  borderRadius: BorderRadius.circular(18),
-                                  image: DecorationImage(
-                                    image: imageProvider,
-                                    fit: BoxFit.cover,
+                  child: GestureDetector(
+                    onTap: () async {
+                      articleSingleController.id.value =
+                          articleListController.articlesList[index].id!;
+                      await articleSingleController.getArticleInfo();
+                      Get.to(ArticleSingleScreen());
+                    },
+                    child: SizedBox(
+                      height: size.height / 7.73,
+                      child: Row(
+                        children: [
+                          // article image
+                          SizedBox(
+                            width: size.width / 4.17,
+                            child: CachedNetworkImage(
+                              imageUrl: articleListController
+                                  .articlesList[index].image!,
+                              imageBuilder: (context, imageProvider) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    // TODO: check for the radius
+                                    borderRadius: BorderRadius.circular(18),
+                                    image: DecorationImage(
+                                      image: imageProvider,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                            placeholder: (context, url) => LoadingSpinKit(),
-                            errorWidget: (context, url, error) =>
-                                ImageErrorWidget(),
-                          ),
-                        ),
-
-                        SizedBox(width: size.width / 32.125),
-
-                        // article title, views
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              onTap: () async {
-                                articleSingleController.id.value =
-                                    articleListController
-                                        .articlesList[index].id!;
-                                await articleSingleController.getArticleInfo();
-                                Get.to(ArticleSingleScreen());
+                                );
                               },
-                              child: SizedBox(
+                              placeholder: (context, url) => LoadingSpinKit(),
+                              errorWidget: (context, url, error) =>
+                                  ImageErrorWidget(),
+                            ),
+                          ),
+
+                          SizedBox(width: size.width / 32.125),
+
+                          // article title, views
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
                                 width: size.width / 1.57,
                                 child: Text(
                                   articleListController
@@ -93,50 +101,50 @@ class ArticlesListScreen extends StatelessWidget {
                                   maxLines: 2,
                                 ),
                               ),
-                            ),
-                            SizedBox(height: size.height / 48.49),
-                            SizedBox(
-                              width: size.width / 1.57,
-                              child: Row(
-                                children: [
-                                  Text(
-                                    articleListController
-                                        .articlesList[index].author!,
-                                    style: articleAuthorViewsTextStyle,
-                                  ),
-                                  SizedBox(width: size.width / 44.69),
-                                  Text(
-                                    Strings.view,
-                                    style: articleAuthorViewsTextStyle,
-                                  ),
-                                  SizedBox(width: size.width / 91.07),
-                                  Text(
-                                    articleListController
-                                        .articlesList[index].view!,
-                                    style: articleAuthorViewsTextStyle,
-                                  ),
+                              SizedBox(height: size.height / 48.49),
+                              SizedBox(
+                                width: size.width / 1.57,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      articleListController
+                                          .articlesList[index].author!,
+                                      style: articleAuthorViewsTextStyle,
+                                    ),
+                                    SizedBox(width: size.width / 44.69),
+                                    Text(
+                                      Strings.view,
+                                      style: articleAuthorViewsTextStyle,
+                                    ),
+                                    SizedBox(width: size.width / 91.07),
+                                    Text(
+                                      articleListController
+                                          .articlesList[index].view!,
+                                      style: articleAuthorViewsTextStyle,
+                                    ),
 
-                                  // category
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          left: size.width / 30),
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          articleListController
-                                              .articlesList[index].catName!,
-                                          style: articleCategoryTextStyle,
+                                    // category
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: size.width / 30),
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            articleListController
+                                                .articlesList[index].catName!,
+                                            style: articleCategoryTextStyle,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );

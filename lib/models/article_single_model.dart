@@ -13,6 +13,7 @@ class ArticleSingleModel {
     this.view,
     this.status,
     this.createdAt,
+    this.isFavorite,
   });
   String? id;
   String? title;
@@ -24,17 +25,21 @@ class ArticleSingleModel {
   String? view;
   String? status;
   String? createdAt;
+  bool? isFavorite;
 
   ArticleSingleModel.fromJson(Map<String, dynamic> map) {
-    id = map['id'];
-    title = map['title'];
-    content = map['content'];
-    image = ApiConstants.baseDlUrl + map['image'];
-    catiId = map['cati_id'];
-    catName = map['cat_name'];
-    author = map['author'];
-    view = map['view'];
-    status = map['status'];
-    createdAt = map['created_at'];
+    var info = map['info'];
+
+    id = info['id'];
+    title = info['title'];
+    content = info['content'];
+    image = ApiConstants.baseDlUrl + info['image'];
+    catiId = info['cati_id'];
+    catName = info['cat_name'];
+    author = info['author'];
+    view = info['view'];
+    status = info['status'];
+    createdAt = info['created_at'];
+    isFavorite = map['isFavorite'];
   }
 }

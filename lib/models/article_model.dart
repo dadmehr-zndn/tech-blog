@@ -1,7 +1,7 @@
 import 'package:tech_blog/constants/api_constants.dart';
 
-class HomeTopArticlesModel {
-  HomeTopArticlesModel({
+class ArticleModel {
+  ArticleModel({
     required this.id,
     required this.title,
     required this.image,
@@ -23,7 +23,7 @@ class HomeTopArticlesModel {
   String? status;
   String? createdAt;
 
-  HomeTopArticlesModel.fromJson(Map<String, dynamic> json) {
+  ArticleModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     image = ApiConstants.baseDlUrl + json['image'];

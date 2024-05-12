@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_blog/constants/colors.dart';
 import 'package:tech_blog/constants/text_styles.dart';
 
-PreferredSize customizedAppBar(Size size, String title) {
+PreferredSize customizedAppBar(Size size, {required String title}) {
   return PreferredSize(
     preferredSize: Size.fromHeight(size.height / 8.5),
     child: Padding(

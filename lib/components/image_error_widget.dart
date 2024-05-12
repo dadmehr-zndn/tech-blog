@@ -7,10 +7,12 @@ class ImageErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(
-      Icons.image_not_supported_outlined,
-      color: Colors.grey,
-      size: 38,
+    return const Center(
+      child: Icon(
+        Icons.image_not_supported_outlined,
+        color: Colors.grey,
+        size: 38,
+      ),
     );
   }
 }
