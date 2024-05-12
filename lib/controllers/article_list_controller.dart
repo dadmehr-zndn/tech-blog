@@ -5,8 +5,11 @@ import 'package:tech_blog/services/dio_service.dart';
 
 class ArticleListController extends GetxController {
   RxList<ArticleModel> articlesList = RxList();
+  RxBool loading = false.obs;
 
   getArticlesList() async {
+    loading.value = true;
+
     var response = await DioService().getMethod(ApiConstants.getArticlesList);
 
     if (response.statusCode == 200) {
@@ -16,9 +19,13 @@ class ArticleListController extends GetxController {
         ),
       );
     }
+
+    loading.value = false;
   }
 
   getArticlesListByTagId(String id) async {
+    loading.value = true;
+
     articlesList.clear();
 
     var response = await DioService().getMethod(
@@ -26,11 +33,17 @@ class ArticleListController extends GetxController {
 
     if (response.statusCode == 200) {
       response.data.forEach(
-        (element) => articlesList.add(
-          ArticleModel.fromJson(element),
-        ),
+        (element) {
+          if (element['author'] != null) {
+            articlesList.add(
+              ArticleModel.fromJson(element),
+            );
+          }
+        },
       );
     }
+
+    loading.value = false;
   }
 
   @override
