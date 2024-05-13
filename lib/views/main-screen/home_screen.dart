@@ -3,7 +3,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/article_horizontal_list.dart';
@@ -35,8 +34,7 @@ class HomeScreen extends StatelessWidget {
   final double podcastPostHeight;
 
   HomeScreenController homeScreenController = Get.put(HomeScreenController());
-  ArticleListController articleListController =
-      Get.put(ArticleListController());
+  var articleListController = Get.find<ArticleListController>();
 
   @override
   Widget build(BuildContext context) {

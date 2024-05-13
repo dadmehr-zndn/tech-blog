@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:tech_blog/binding.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:tech_blog/views/splash_screen.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
 
     return GetMaterialApp(
+      initialBinding: ArticleBinding(),
       title: 'Tech Blog',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

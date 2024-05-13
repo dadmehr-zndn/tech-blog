@@ -20,8 +20,7 @@ import '../components/single_content_appbar.dart';
 class ArticleSingleScreen extends StatelessWidget {
   ArticleSingleScreen({super.key});
 
-  ArticleSingleController articleSingleController =
-      Get.put(ArticleSingleController());
+  var articleSingleController = Get.find<ArticleSingleController>();
 
   @override
   Widget build(BuildContext context) {

@@ -18,8 +18,7 @@ class ArticlesHorizontalList extends StatelessWidget {
   final Size size;
   final TextTheme textTheme;
 
-  ArticleSingleController articleSingleController =
-      Get.put(ArticleSingleController());
+  var articleSingleController = Get.find<ArticleSingleController>();
 
   @override
   Widget build(BuildContext context) {

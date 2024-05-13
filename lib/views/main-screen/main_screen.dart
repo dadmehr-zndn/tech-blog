@@ -214,9 +214,6 @@ class BottomNavigationBar extends StatelessWidget {
   final Size size;
   final Function(int) changeScreen;
 
-  RegisterController registerController =
-      Get.put(RegisterController(), permanent: true);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -254,7 +251,7 @@ class BottomNavigationBar extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      registerController.checkUserLoginStatus();
+                      Get.find<RegisterController>().checkUserLoginStatus();
                     },
                     child: ImageIcon(
                       Assets.icons.feather.image().image,

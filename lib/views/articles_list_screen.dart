@@ -3,7 +3,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/customized_appbar.dart';
 import 'package:tech_blog/components/image_error_widget.dart';
@@ -12,7 +11,6 @@ import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/constants/text_styles.dart';
 import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/controllers/article_single_controller.dart';
-import 'package:tech_blog/views/article_single_screen.dart';
 
 class ArticlesListScreen extends StatefulWidget {
   const ArticlesListScreen(
@@ -25,11 +23,9 @@ class ArticlesListScreen extends StatefulWidget {
 }
 
 class _ArticlesListScreenState extends State<ArticlesListScreen> {
-  ArticleListController articleListController =
-      Get.put(ArticleListController());
+  var articleListController = Get.find<ArticleListController>();
 
-  ArticleSingleController articleSingleController =
-      Get.put(ArticleSingleController());
+  var articleSingleController = Get.find<ArticleSingleController>();
 
   @override
   Widget build(BuildContext context) {
