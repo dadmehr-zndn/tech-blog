@@ -49,3 +49,9 @@ TextStyle articleSingleContentTextStyle = const TextStyle(
   fontSize: 17,
   fontWeight: FontWeight.w300,
 );
+TextStyle snackbarSuccessTextStyle = const TextStyle(
+  color: SolidColors.tagsTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w200,
+);

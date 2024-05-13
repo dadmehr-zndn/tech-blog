@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/constants/storage.dart';
+import 'package:tech_blog/controllers/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/services/dio_service.dart';
 import 'package:tech_blog/views/article_single_screen.dart';
@@ -116,50 +118,6 @@ class _MainScreenState extends State<MainScreen> {
                       color: SolidColors.drawerMenuTitle, fontSize: 12.5),
                 ),
               ),
-
-              // TODO: Delete this 4 below widgets
-              Divider(
-                color: SolidColors.divideHorizontalLine,
-                thickness: 0.5,
-              ),
-              ListTile(
-                onTap: () {
-                  _scaffolKkey.currentState!.closeDrawer();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ArticlesListScreen(),
-                    ),
-                  );
-                },
-                splashColor: SolidColors.primaryColor.withOpacity(0.1),
-                title: Text(
-                  'Articles List',
-                  style: TextStyle(
-                      color: SolidColors.drawerMenuTitle, fontSize: 12.5),
-                ),
-              ),
-              Divider(
-                color: SolidColors.divideHorizontalLine,
-                thickness: 0.5,
-              ),
-              ListTile(
-                onTap: () {
-                  _scaffolKkey.currentState!.closeDrawer();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ArticleSingleScreen(),
-                    ),
-                  );
-                },
-                splashColor: SolidColors.primaryColor.withOpacity(0.1),
-                title: Text(
-                  'Single Article',
-                  style: TextStyle(
-                      color: SolidColors.drawerMenuTitle, fontSize: 12.5),
-                ),
-              ),
             ],
           ),
         ),
@@ -188,9 +146,13 @@ class _MainScreenState extends State<MainScreen> {
               Assets.images.logo.image(height: size.height / 13.63),
               Transform.scale(
                 scaleX: -1,
-                child: Icon(
-                  Icons.search,
-                  size: size.width / 17,
+                child: IconButton(
+                  //TODO: working as a logout, change it later
+                  onPressed: () => Storage.clearStorage(),
+                  icon: Icon(
+                    Icons.search,
+                    size: size.width / 17,
+                  ),
                 ),
               ),
             ],
@@ -232,19 +194,9 @@ class _MainScreenState extends State<MainScreen> {
             right: 0,
             left: 0,
             child: BottomNavigationBar(
-                size: size,
-                changeScreen: (int index) {
-                  if (index == 1) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RegisterWelcomeScreen(),
-                      ),
-                    );
-                  }
-
-                  selectedScreenIndex.value = index;
-                }),
+              size: size,
+              changeScreen: (int index) => selectedScreenIndex.value = index,
+            ),
           )
         ],
       ),
@@ -253,7 +205,7 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 class BottomNavigationBar extends StatelessWidget {
-  const BottomNavigationBar({
+  BottomNavigationBar({
     super.key,
     required this.size,
     required this.changeScreen,
@@ -261,6 +213,9 @@ class BottomNavigationBar extends StatelessWidget {
 
   final Size size;
   final Function(int) changeScreen;
+
+  RegisterController registerController =
+      Get.put(RegisterController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +253,9 @@ class BottomNavigationBar extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () => changeScreen(1),
+                    onTap: () {
+                      registerController.checkUserLoginStatus();
+                    },
                     child: ImageIcon(
                       Assets.icons.feather.image().image,
                       color: SolidColors.icon,

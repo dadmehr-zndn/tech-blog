@@ -79,12 +79,6 @@ class RegisterWelcomeScreen extends StatelessWidget {
                               .activationCodeTextEditingController,
                           onPressed: () async {
                             registerController.verify();
-
-                            await Future.delayed(Duration(seconds: 2));
-
-                            if (registerController.isVerified.value == true) {
-                              Get.to(RegisterSuccessfulScreen());
-                            }
                           },
                         );
                       } else {

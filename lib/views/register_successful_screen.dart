@@ -11,6 +11,7 @@ import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/home_tag_model.dart';
 import 'package:tech_blog/models/models.dart';
+import 'package:tech_blog/views/main-screen/main_screen.dart';
 
 class RegisterSuccessfulScreen extends StatefulWidget {
   const RegisterSuccessfulScreen({super.key});
@@ -188,7 +189,8 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
 
               ElevatedButton(
                 onPressed: () {
-                  //TODO: implement
+                  //TODO: must change here
+                  Get.offAll(MainScreen());
                 },
                 child: Text(
                   Strings.buttonContinue,
