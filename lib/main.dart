@@ -2,21 +2,23 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:tech_blog/views/splash_screen.dart';
 // import 'gen/fonts.gen.dart';
 // import 'gen/assets.gen.dart';
 
-void main() {
+void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: SolidColors.systemStatusBar,
     statusBarIconBrightness: Brightness.dark,
     systemNavigationBarColor: SolidColors.systemNavigationBar,
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
+
+  await GetStorage.init();
 
   runApp(const MyApp());
 }

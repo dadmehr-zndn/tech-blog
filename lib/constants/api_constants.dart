@@ -9,4 +9,6 @@ class ApiConstants {
 // TODO: need change I guess
   static const String getArticleInfo =
       '${baseUrl}article/get.php?command=info&id=';
+
+  static const String postRegisterEmail = '${baseUrl}register/action.php';
 }

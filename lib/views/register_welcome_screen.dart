@@ -4,13 +4,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/controllers/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/views/main-screen/main_screen.dart';
 import 'package:tech_blog/views/register_successful_screen.dart';
 import 'package:validators/validators.dart';
 
 class RegisterWelcomeScreen extends StatelessWidget {
-  const RegisterWelcomeScreen({super.key});
+  RegisterWelcomeScreen({super.key});
+
+  RegisterController registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,25 +57,39 @@ class RegisterWelcomeScreen extends StatelessWidget {
                     textTheme,
                     headerText: Strings.plsEnterYourEmail,
                     hintText: Strings.techBlogEmail,
+                    textEditingController:
+                        registerController.emailTextEditingController,
                     onPressed: () {
-                      Navigator.pop(context);
+                      if (isEmail(
+                          registerController.emailTextEditingController.text)) {
+                        print('valid email');
+                        //TODO: here
+                        registerController.register();
 
-                      //Display Code BottomSheet
-                      _showRegisterScreenBottomSheet(
-                        context,
-                        size,
-                        textTheme,
-                        headerText: Strings.enterTheActivationCode,
-                        hintText: Strings.codeTextHint,
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RegisterSuccessfulScreen(),
-                            ),
-                          );
-                        },
-                      );
+                        Navigator.pop(context);
+
+                        //Display Code BottomSheet
+                        _showRegisterScreenBottomSheet(
+                          context,
+                          size,
+                          textTheme,
+                          headerText: Strings.enterTheActivationCode,
+                          hintText: Strings.codeTextHint,
+                          textEditingController: registerController
+                              .activationCodeTextEditingController,
+                          onPressed: () async {
+                            registerController.verify();
+
+                            await Future.delayed(Duration(seconds: 2));
+
+                            if (registerController.isVerified.value == true) {
+                              Get.to(RegisterSuccessfulScreen());
+                            }
+                          },
+                        );
+                      } else {
+                        print('invalid email');
+                      }
                     },
                   );
                 },
@@ -90,6 +109,7 @@ class RegisterWelcomeScreen extends StatelessWidget {
     required String headerText,
     required String hintText,
     required Function() onPressed,
+    required textEditingController,
   }) {
     return showModalBottomSheet(
       barrierColor: SolidColors.pageBackgroundOverlay,
@@ -127,10 +147,9 @@ class RegisterWelcomeScreen extends StatelessWidget {
                     child: SizedBox(
                       height: size.height / 17,
                       child: TextField(
+                        controller: textEditingController,
                         onChanged: (value) {
-                          if (isEmail(value)) {
-                            print(value);
-                          }
+                          print('isEmail: ${isEmail(value)}');
                         },
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
