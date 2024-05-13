@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
 
     return GetMaterialApp(
-      initialBinding: ArticleBinding(),
       title: 'Tech Blog',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
