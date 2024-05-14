@@ -1,8 +1,6 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, deprecated_member_use
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
@@ -205,7 +203,7 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 class BottomNavigationBar extends StatelessWidget {
-  BottomNavigationBar({
+  const BottomNavigationBar({
     super.key,
     required this.size,
     required this.changeScreen,

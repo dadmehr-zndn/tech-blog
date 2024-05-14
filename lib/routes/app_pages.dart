@@ -20,7 +20,11 @@ class AppPages {
     ),
     GetPage(name: Routes.articlesList, page: () => const ArticlesListScreen()),
     GetPage(name: Routes.articleSingle, page: () => ArticleSingleScreen()),
-    GetPage(name: Routes.registerWelcome, page: () => RegisterWelcomeScreen()),
+    GetPage(
+      name: Routes.registerWelcome,
+      page: () => RegisterWelcomeScreen(),
+      binding: RegisterBinding(),
+    ),
     GetPage(
         name: Routes.registerSuccessful,
         page: () => const RegisterSuccessfulScreen()),
