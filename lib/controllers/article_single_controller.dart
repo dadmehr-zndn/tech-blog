@@ -3,8 +3,8 @@ import 'package:tech_blog/constants/api_constants.dart';
 import 'package:tech_blog/models/article_model.dart';
 import 'package:tech_blog/models/article_single_model.dart';
 import 'package:tech_blog/models/home_tag_model.dart';
+import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/services/dio_service.dart';
-import 'package:tech_blog/views/article_single_screen.dart';
 
 class ArticleSingleController extends GetxController {
   Rx<ArticleSingleModel> articleSingleModel = ArticleSingleModel().obs;
@@ -47,13 +47,6 @@ class ArticleSingleController extends GetxController {
       loading.value = false;
     }
 
-    Get.to(ArticleSingleScreen());
+    Get.toNamed(Routes.articleSingle);
   }
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-
-  //   getArticleInfo();
-  // }
 }

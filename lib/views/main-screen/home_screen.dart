@@ -12,6 +12,7 @@ import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
+import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/views/articles_list_screen.dart';
 import '../../components/loading_spinkit.dart';
 
@@ -53,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         articleListController.getArticlesList();
-                        Get.to(ArticlesListScreen());
+                        Get.toNamed(Routes.articlesList);
                       },
                       child: HomePageViewHottestArticles(
                         sidePaddings: sidePaddings,

@@ -6,7 +6,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tech_blog/constants/api_constants.dart';
 import 'package:tech_blog/constants/colors.dart';
 import 'package:tech_blog/constants/storage.dart';
-import 'package:tech_blog/constants/text_styles.dart';
+import 'package:tech_blog/routes/app_pages.dart';
+import 'package:tech_blog/themes/text_styles.dart';
 import 'package:tech_blog/services/dio_service.dart';
 import 'package:tech_blog/views/register_successful_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
@@ -93,7 +94,7 @@ class RegisterController extends GetxController {
   checkUserLoginStatus() {
     if (GetStorage().read(Storage.token) == null ||
         GetStorage().read(Storage.token) == 'token') {
-      Get.to(RegisterWelcomeScreen());
+      Get.toNamed(Routes.registerWelcome);
     } else {
       print('already logged in');
     }

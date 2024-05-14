@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tech_blog/constants/colors.dart';
-import 'package:tech_blog/constants/text_styles.dart';
+import 'package:tech_blog/themes/text_styles.dart';
 
 PreferredSize customizedAppBar(Size size, {required String title}) {
   return PreferredSize(

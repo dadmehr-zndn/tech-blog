@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:tech_blog/views/main-screen/main_screen.dart';
+import 'package:tech_blog/routes/app_pages.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,12 +20,9 @@ class _SplashScrennState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(
-        Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MainScreen(),
-            )));
+      Duration(seconds: 3),
+      () => Get.offNamed(Routes.main),
+    );
   }
 
   @override

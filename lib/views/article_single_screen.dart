@@ -9,7 +9,7 @@ import 'package:tech_blog/components/image_error_widget.dart';
 import 'package:tech_blog/components/loading_spinkit.dart';
 import 'package:tech_blog/constants/colors.dart';
 import 'package:tech_blog/constants/strings.dart';
-import 'package:tech_blog/constants/text_styles.dart';
+import 'package:tech_blog/themes/text_styles.dart';
 import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/controllers/article_single_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
