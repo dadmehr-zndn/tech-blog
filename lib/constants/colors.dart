@@ -1,12 +1,19 @@
 import 'dart:ui';
 
 class SolidColors {
+  SolidColors._();
+
   static const Color primaryColor = Color(0xff420457);
   static const Color buttonTextColor = Color(0xffffffff);
   static const Color secondButtonColor = Color(0xff2A2A2A);
   static const Color scaffold = Color(0xffffffff);
   static const Color appbar = Color(0xffffffff);
   static const Color profileTexts = Color(0xff000000);
+
+  static Color clickSplashColor = primaryColor.withOpacity(0.1);
+
+  static const Color white = Color(0xffffffff);
+  static const Color black = Color(0xff000000);
 
   static const Color systemNavigationBar = Color(0xffffffff);
   static const Color systemStatusBar = Color(0xffffffff);

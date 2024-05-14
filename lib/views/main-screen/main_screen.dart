@@ -71,7 +71,7 @@ class _MainScreenState extends State<MainScreen> {
                   _scaffolKkey.currentState!.closeDrawer();
                   selectedScreenIndex.value = 2;
                 },
-                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                splashColor: SolidColors.clickSplashColor,
                 title: Text(
                   Strings.userProfile,
                   style: TextStyle(
@@ -84,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               ListTile(
                 onTap: () => launchMyUrl(Strings.aboutTechblogUrl),
-                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                splashColor: SolidColors.clickSplashColor,
                 title: Text(
                   Strings.aboutTechBlog,
                   style: TextStyle(
@@ -98,7 +98,7 @@ class _MainScreenState extends State<MainScreen> {
               ListTile(
                 onTap: () async =>
                     await Share.share(Strings.shareTechblogDialog),
-                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                splashColor: SolidColors.clickSplashColor,
                 title: Text(
                   Strings.sharingTechBlog,
                   style: TextStyle(
@@ -111,7 +111,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               ListTile(
                 onTap: () => launchMyUrl(Strings.techblogGithubUrl),
-                splashColor: SolidColors.primaryColor.withOpacity(0.1),
+                splashColor: SolidColors.clickSplashColor,
                 title: Text(
                   Strings.techBlogOnGithub,
                   style: TextStyle(

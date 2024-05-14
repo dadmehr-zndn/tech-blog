@@ -16,7 +16,7 @@ class ProfileTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      splashColor: SolidColors.primaryColor.withOpacity(0.1),
+      splashColor: SolidColors.clickSplashColor,
       onTap: () {
         //TODO: implement
       },

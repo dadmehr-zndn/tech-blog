@@ -55,3 +55,15 @@ TextStyle snackbarSuccessTextStyle = const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w200,
 );
+TextStyle mainScreenBottomSheetTextStyle = const TextStyle(
+  color: SolidColors.black,
+  fontFamily: 'ArtinSharp',
+  fontSize: 12,
+  fontWeight: FontWeight.w200,
+);
+TextStyle mainScreenButtonsTextStyle = const TextStyle(
+  color: SolidColors.black,
+  fontFamily: 'ArtinSharp',
+  fontSize: 13,
+  fontWeight: FontWeight.w400,
+);

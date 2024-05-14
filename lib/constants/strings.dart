@@ -1,4 +1,6 @@
 class Strings {
+  Strings._();
+
   static const String shareTechblogDialog =
       'you can use this amazing app dude!';
   static const String techblogGithubUrl =

@@ -26,6 +26,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
 
+  /// File path: assets/icons/manage_articles.png
+  AssetGenImage get manageArticles =>
+      const AssetGenImage('assets/icons/manage_articles.png');
+
+  /// File path: assets/icons/manage_podcasts.png
+  AssetGenImage get managePodcasts =>
+      const AssetGenImage('assets/icons/manage_podcasts.png');
+
   /// File path: assets/icons/microphone.png
   AssetGenImage get microphone =>
       const AssetGenImage('assets/icons/microphone.png');
@@ -37,8 +45,17 @@ class $AssetsIconsGen {
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [avatar, feather, hastag, home, microphone, pencil, user];
+  List<AssetGenImage> get values => [
+        avatar,
+        feather,
+        hastag,
+        home,
+        manageArticles,
+        managePodcasts,
+        microphone,
+        pencil,
+        user
+      ];
 }
 
 class $AssetsImagesGen {
