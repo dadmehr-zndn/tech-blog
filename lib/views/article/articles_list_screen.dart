@@ -33,7 +33,7 @@ class _ArticlesListScreenState extends State<ArticlesListScreen> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: customizedAppBar(size, title: 'لیست ${widget.appBarTitle}'),
+        appBar: customizedAppBar(title: 'لیست ${widget.appBarTitle}'),
         body: SizedBox(
           child: Obx(
             () => articleListController.loading.value == false

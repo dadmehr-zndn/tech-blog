@@ -41,7 +41,8 @@ class RegisterWelcomeScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   text: Strings.welcomeToTechBlog,
-                  style: textTheme.headline4,
+                  style: textTheme.headline4!
+                      .copyWith(color: SolidColors.registerScreenText),
                 ),
               ),
 

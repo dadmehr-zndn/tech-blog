@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/constants/storage.dart';
+import 'package:tech_blog/controllers/articles_manage_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
 class MainScreenBottomSheet extends StatelessWidget {
-  const MainScreenBottomSheet({
+  MainScreenBottomSheet({
     super.key,
   });
+
+  ArticlesManageController articlesManageController =
+      Get.put(ArticlesManageController());
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +62,13 @@ class MainScreenBottomSheet extends StatelessWidget {
                 InkWell(
                   splashColor: SolidColors.clickSplashColor,
                   borderRadius: BorderRadius.circular(5),
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.articlesManaged);
+                    //TODO: delete
+                    articlesManageController.getManagedArticles(
+                      GetStorage().read(Storage.userId),
+                    );
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

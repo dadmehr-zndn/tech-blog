@@ -7,6 +7,7 @@ class Routes {
 
   static const String articleSingle = '/ArticleSingleScreen';
   static const String articlesList = '/ArticlesListScreen';
+  static const String articlesManaged = '/ArticlesManagedScreen';
 
   static const String registerSuccessful = '/RegisterSuccessfulScreen';
   static const String registerWelcome = '/RegisterWelcomeScreen';

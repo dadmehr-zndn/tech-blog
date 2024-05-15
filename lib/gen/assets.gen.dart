@@ -72,11 +72,16 @@ class $AssetsImagesGen {
   AssetGenImage get posterTest =>
       const AssetGenImage('assets/images/poster_test.png');
 
+  /// File path: assets/images/techBotSad.svg
+  SvgGenImage get techBotSad =>
+      const SvgGenImage('assets/images/techBotSad.svg');
+
   /// File path: assets/images/tech_bot.svg
   SvgGenImage get techBot => const SvgGenImage('assets/images/tech_bot.svg');
 
   /// List of all assets
-  List<dynamic> get values => [downArrow, logo, posterTest, techBot];
+  List<dynamic> get values =>
+      [downArrow, logo, posterTest, techBotSad, techBot];
 }
 
 class Assets {

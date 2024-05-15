@@ -11,4 +11,7 @@ class ApiConstants {
       '${baseUrl}article/get.php?command=info&id=';
 
   static const String postRegisterEmail = '${baseUrl}register/action.php';
+
+  static const String getMyArticles =
+      '${baseUrl}article/get.php?command=published_by_me&user_id=';
 }
