@@ -65,6 +65,8 @@ class MainScreenBottomSheet extends StatelessWidget {
                   onTap: () {
                     Get.back();
                     Get.toNamed(Routes.articlesManaged);
+
+                    articlesManageController.getManagedArticles();
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

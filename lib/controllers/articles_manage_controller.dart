@@ -17,11 +17,13 @@ class ArticlesManageController extends GetxController {
     var response =
         await DioService().getMethod('${ApiConstants.getMyArticles}1');
 
-    articleList.clear();
-    response.data
-        .forEach((element) => articleList.add(ArticleModel.fromJson(element)));
+    if (response.statusCode == 200) {
+      articleList.clear();
+      response.data.forEach(
+          (element) => articleList.add(ArticleModel.fromJson(element)));
 
-    loading.value = false;
+      loading.value = false;
+    }
 
     log('myArticles: ${response.data}');
   }
