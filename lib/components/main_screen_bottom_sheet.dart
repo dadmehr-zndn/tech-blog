@@ -63,11 +63,8 @@ class MainScreenBottomSheet extends StatelessWidget {
                   splashColor: SolidColors.clickSplashColor,
                   borderRadius: BorderRadius.circular(5),
                   onTap: () {
+                    Get.back();
                     Get.toNamed(Routes.articlesManaged);
-                    //TODO: delete
-                    articlesManageController.getManagedArticles(
-                      GetStorage().read(Storage.userId),
-                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

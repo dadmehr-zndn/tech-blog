@@ -21,9 +21,6 @@ class ArticlesManagedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: customizedAppBar(title: Strings.manageArticles),
       body: SafeArea(
@@ -36,18 +33,18 @@ class ArticlesManagedScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(
-                          right: size.width / 21.87,
-                          bottom: size.height / 25.17,
-                          top: index == 0 ? size.height / 36.72 : 0),
+                          right: Get.width / 21.87,
+                          bottom: Get.height / 25.17,
+                          top: index == 0 ? Get.height / 36.72 : 0),
                       child: GestureDetector(
                         onTap: () async {},
                         child: SizedBox(
-                          height: size.height / 7.73,
+                          height: Get.height / 7.73,
                           child: Row(
                             children: [
                               // article image
                               SizedBox(
-                                width: size.width / 4.17,
+                                width: Get.width / 4.17,
                                 child: CachedNetworkImage(
                                   imageUrl: articlesManageController
                                       .articleList[index].image!,
@@ -70,14 +67,14 @@ class ArticlesManagedScreen extends StatelessWidget {
                                 ),
                               ),
 
-                              SizedBox(width: size.width / 32.125),
+                              SizedBox(width: Get.width / 32.125),
 
                               // article title, views
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    width: size.width / 1.57,
+                                    width: Get.width / 1.57,
                                     child: Text(
                                       articlesManageController
                                           .articleList[index].title!,
@@ -86,9 +83,9 @@ class ArticlesManagedScreen extends StatelessWidget {
                                       maxLines: 2,
                                     ),
                                   ),
-                                  SizedBox(height: size.height / 48.49),
+                                  SizedBox(height: Get.height / 48.49),
                                   SizedBox(
-                                    width: size.width / 1.57,
+                                    width: Get.width / 1.57,
                                     child: Row(
                                       children: [
                                         Text(
@@ -96,12 +93,12 @@ class ArticlesManagedScreen extends StatelessWidget {
                                               .articleList[index].author!,
                                           style: articleAuthorViewsTextStyle,
                                         ),
-                                        SizedBox(width: size.width / 44.69),
+                                        SizedBox(width: Get.width / 44.69),
                                         Text(
                                           Strings.view,
                                           style: articleAuthorViewsTextStyle,
                                         ),
-                                        SizedBox(width: size.width / 91.07),
+                                        SizedBox(width: Get.width / 91.07),
                                         Text(
                                           articlesManageController
                                               .articleList[index].view!,
@@ -112,7 +109,7 @@ class ArticlesManagedScreen extends StatelessWidget {
                                         Expanded(
                                           child: Padding(
                                             padding: EdgeInsets.only(
-                                                left: size.width / 30),
+                                                left: Get.width / 30),
                                             child: Align(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
