@@ -11,6 +11,7 @@ import 'package:tech_blog/components/loading_spinkit.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/articles_manage_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
 class ArticlesManagedScreen extends StatelessWidget {
@@ -24,12 +25,12 @@ class ArticlesManagedScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(
-          bottom: Get.width / 38.05,
+          bottom: Get.height / 38.05,
           right: Get.width / 5,
           left: Get.width / 5,
         ),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () => Get.toNamed(Routes.articleEditting),
           child: Text(Strings.buttonWriteArticle, style: Get.textTheme.button),
         ),
       ),

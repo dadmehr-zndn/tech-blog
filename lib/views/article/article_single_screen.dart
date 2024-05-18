@@ -74,7 +74,7 @@ class ArticleSingleScreen extends StatelessWidget {
                           ),
 
                           // AppBar
-                          singleContentAppBar(size),
+                          singleContentAppBar(),
                         ],
                       ),
 

@@ -61,6 +61,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/default_placeholder_image.jpg
+  AssetGenImage get defaultPlaceholderImage =>
+      const AssetGenImage('assets/images/default_placeholder_image.jpg');
+
   /// File path: assets/images/down_arrow.png
   AssetGenImage get downArrow =>
       const AssetGenImage('assets/images/down_arrow.png');
@@ -80,8 +84,14 @@ class $AssetsImagesGen {
   SvgGenImage get techBot => const SvgGenImage('assets/images/tech_bot.svg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [downArrow, logo, posterTest, techBotSad, techBot];
+  List<dynamic> get values => [
+        defaultPlaceholderImage,
+        downArrow,
+        logo,
+        posterTest,
+        techBotSad,
+        techBot
+      ];
 }
 
 class Assets {

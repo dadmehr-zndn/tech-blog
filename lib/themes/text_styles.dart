@@ -67,3 +67,21 @@ TextStyle mainScreenButtonsTextStyle = const TextStyle(
   fontSize: 13,
   fontWeight: FontWeight.w400,
 );
+TextStyle choosePictureTextStyle = const TextStyle(
+  color: SolidColors.white,
+  fontFamily: 'ArtinSharp',
+  fontSize: 13,
+  fontWeight: FontWeight.w300,
+);
+TextStyle articleTitleInputTextStyle = const TextStyle(
+  color: SolidColors.articleTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+);
+TextStyle articleBodyInputTextStyle = const TextStyle(
+  color: SolidColors.articleBody,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+);

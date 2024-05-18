@@ -3,10 +3,12 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/models/article_model.dart';
+import 'package:tech_blog/models/article_single_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
 class ArticlesManageController extends GetxController {
   RxList<ArticleModel> articleList = RxList.empty();
+  Rx<ArticleSingleModel> articleSingleModel = ArticleSingleModel(image: '').obs;
   RxBool loading = false.obs;
 
   getManagedArticles([String? userId]) async {

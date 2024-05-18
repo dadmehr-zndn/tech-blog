@@ -7,6 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/article_horizontal_list.dart';
 import 'package:tech_blog/components/hashtag.dart';
+import 'package:tech_blog/components/row_icon_title.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
@@ -56,10 +57,9 @@ class HomeScreen extends StatelessWidget {
                         articleListController.getArticlesList();
                         Get.toNamed(Routes.articlesList);
                       },
-                      child: HomePageViewHottestArticles(
+                      child: RowIconTitle(
+                        title: Strings.viewTheHottestArticles,
                         sidePaddings: sidePaddings,
-                        size: size,
-                        textTheme: textTheme,
                       ),
                     ),
                     SizedBox(height: size.height / 46.21),
@@ -333,39 +333,6 @@ class HomePageViewHottestPodcasts extends StatelessWidget {
           SizedBox(width: size.width / 32.18),
           Text(
             Strings.viewTheHottestPodcasts,
-            style: textTheme.headline3,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class HomePageViewHottestArticles extends StatelessWidget {
-  const HomePageViewHottestArticles({
-    super.key,
-    required this.sidePaddings,
-    required this.size,
-    required this.textTheme,
-  });
-
-  final double sidePaddings;
-  final Size size;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(right: sidePaddings),
-      child: Row(
-        children: [
-          ImageIcon(
-            Assets.icons.pencil.image().image,
-            color: SolidColors.showSectionTitle,
-          ),
-          SizedBox(width: size.width / 32.18),
-          Text(
-            Strings.viewTheHottestArticles,
             style: textTheme.headline3,
           ),
         ],

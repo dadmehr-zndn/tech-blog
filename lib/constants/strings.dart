@@ -85,7 +85,7 @@ class Strings {
   static const String iAmMainArticleBody =
       'من متن و بدنه اصلی مقاله هستم ، اگه میخوای من رو ویرایش کنی و یه مقاله جذاب بنویسی ، نوشته آبی رنگ بالا که نوشته "ویرایش متن اصلی مقاله" رو با انگشتت لمس کن تا وارد ویرایشگر بشی';
   static const String chooseCategory = 'انتخاب دسته بندی ';
-  static const String buttonDone = 'انتخاب دسته بندی ';
+  static const String buttonDone = 'تموم شد';
 
   // نوشتن متن اصلی
   static const String writeAttractiveArticle = 'یک مقاله جذاب بنویس';

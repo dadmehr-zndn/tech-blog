@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/constants/dimens.dart';
 import 'package:tech_blog/constants/storage.dart';
 import 'package:tech_blog/controllers/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/services/dio_service.dart';
-import 'package:tech_blog/views/article/article_single_screen.dart';
-import 'package:tech_blog/views/article/articles_list_screen.dart';
 import 'package:tech_blog/views/main-screen/profile_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
 import 'home_screen.dart';
@@ -33,7 +31,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
-    var sidePaddings = size.width / 12.53;
     var hastagPadding = size.width / 28.72;
     // var blogPostHeight = size.height / 4.37;
     var blogPostHeight = size.height / 4;
@@ -126,9 +123,9 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: SolidColors.appbar,
         title: Padding(
           padding: EdgeInsets.fromLTRB(
-            sidePaddings,
+            Dimens.sidePaddings,
             size.height / 30.6,
-            sidePaddings,
+            Dimens.sidePaddings,
             size.height / 29.28,
           ),
           child: Row(
@@ -166,7 +163,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   HomeScreen(
                     size: size,
-                    sidePaddings: sidePaddings,
+                    sidePaddings: Dimens.sidePaddings,
                     textTheme: textTheme,
                     hastagPadding: hastagPadding,
                     blogPostHeight: blogPostHeight,
@@ -175,7 +172,7 @@ class _MainScreenState extends State<MainScreen> {
                   RegisterWelcomeScreen(),
                   ProfileScreen(
                     size: size,
-                    sidePaddings: sidePaddings,
+                    sidePaddings: Dimens.sidePaddings,
                     textTheme: textTheme,
                     hastagPadding: hastagPadding,
                     blogPostHeight: blogPostHeight,

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:tech_blog/binding.dart';
+import 'package:tech_blog/views/article/article_editting_screen.dart';
 import 'package:tech_blog/views/article/article_single_screen.dart';
 import 'package:tech_blog/views/article/articles_list_screen.dart';
 import 'package:tech_blog/views/article/articles_managed_screen.dart';
@@ -33,6 +34,11 @@ class AppPages {
     GetPage(
       name: Routes.articlesManaged,
       page: () => ArticlesManagedScreen(),
+      binding: ArticlesManageBinding(),
+    ),
+    GetPage(
+      name: Routes.articleEditting,
+      page: () => ArticleEdittingScreen(),
       binding: ArticlesManageBinding(),
     ),
   ];
