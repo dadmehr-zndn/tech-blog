@@ -23,9 +23,39 @@ class ArticleEdittingScreen extends StatelessWidget {
 
   ArticlesManageController articlesManageController =
       Get.find<ArticlesManageController>();
-
   HomeScreenController homeScreenController = Get.find<HomeScreenController>();
   FilePickerController filePickerController = Get.put(FilePickerController());
+
+  getArticleTitle() => Get.defaultDialog(
+        title: Strings.articleTitle,
+        titleStyle: articleDialogTitleTextStyle,
+        backgroundColor: SolidColors.primaryColor,
+        content: Container(
+          decoration: BoxDecoration(
+            color: SolidColors.white,
+            borderRadius: BorderRadius.circular(13),
+          ),
+          child: TextField(
+            controller: articlesManageController.articleTitleController,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              hintText: Strings.editArticleTitleHintText,
+            ),
+            style: articleTitleDialogInputTextStyle,
+          ),
+        ),
+        radius: 10,
+        confirm: TextButton(
+          onPressed: () {
+            articlesManageController.updateTitle();
+            Get.back();
+          },
+          child: Text(
+            Strings.sumbit,
+            style: TextStyle(color: SolidColors.white),
+          ),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -134,10 +164,15 @@ class ArticleEdittingScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Edit Article Title
-                    RowIconTitle(title: Strings.editArticleTitle),
+                    GestureDetector(
+                        onTap: () => getArticleTitle(),
+                        child: RowIconTitle(title: Strings.editArticleTitle)),
                     SizedBox(height: Get.height / 85.28),
                     Text(
-                      Strings.hereArticleTitle,
+                      articlesManageController.isTitleEmpty.value == false
+                          ? articlesManageController
+                              .articleSingleModel.value.title!
+                          : Strings.hereArticleTitle,
                       style: articleTitleInputTextStyle,
                     ),
 

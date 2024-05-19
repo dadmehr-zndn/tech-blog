@@ -85,3 +85,15 @@ TextStyle articleBodyInputTextStyle = const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w400,
 );
+TextStyle articleDialogTitleTextStyle = const TextStyle(
+  color: SolidColors.textHint,
+  fontFamily: 'ArtinSharp',
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+);
+TextStyle articleTitleDialogInputTextStyle = const TextStyle(
+  color: SolidColors.black,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w300,
+);

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/models/article_model.dart';
@@ -9,7 +10,9 @@ import 'package:tech_blog/services/dio_service.dart';
 class ArticlesManageController extends GetxController {
   RxList<ArticleModel> articleList = RxList.empty();
   Rx<ArticleSingleModel> articleSingleModel = ArticleSingleModel(image: '').obs;
+  TextEditingController articleTitleController = TextEditingController();
   RxBool loading = false.obs;
+  RxBool isTitleEmpty = true.obs;
 
   getManagedArticles([String? userId]) async {
     print('userId: $userId');
@@ -28,6 +31,13 @@ class ArticlesManageController extends GetxController {
     }
 
     log('myArticles: ${response.data}');
+  }
+
+  updateTitle() {
+    articleSingleModel
+        .update((val) => val!.title = articleTitleController.value.text);
+
+    isTitleEmpty.value = false;
   }
 
   @override

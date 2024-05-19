@@ -14,6 +14,9 @@ class Strings {
   static const String signOutOfTheAccount = 'خروج از حساب کاربری';
   static const String view = 'بازدید';
 
+  static const String editArticleTitleHintText = 'اینجا بنویس..';
+  static const String sumbit = 'ثبت';
+
   // mataleb - 4
   static const String favouriteArticles = 'مقالات مورد علاقه';
 
@@ -79,6 +82,7 @@ class Strings {
   // پیش نمایش
   static const String choosePicture = 'انتخاب تصویر';
   static const String editArticleTitle = 'ویرایش عنوان مقاله';
+  static const String articleTitle = 'عنوان مقاله';
   static const String hereArticleTitle =
       'اینجا عنوان مقاله قرار میگیره ، یه عنوان جذاب انتخاب کن';
   static const String editMainArticleText = 'ویرایش متن اصلی مقاله';
