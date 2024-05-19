@@ -97,3 +97,15 @@ TextStyle articleTitleDialogInputTextStyle = const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w300,
 );
+TextStyle choosingCategoryBottomSheetTextStyle = const TextStyle(
+  color: SolidColors.black,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w700,
+);
+TextStyle noChosenCategoryTextStyle = const TextStyle(
+  color: SolidColors.black,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w200,
+);

@@ -15,7 +15,6 @@ class ArticlesManageController extends GetxController {
   var articleBodyController = '';
   RxBool loading = false.obs;
   RxBool isTitleEmpty = true.obs;
-  RxBool isBodyLoading = false.obs;
 
   getManagedArticles([String? userId]) async {
     print('userId: $userId');
@@ -41,12 +40,6 @@ class ArticlesManageController extends GetxController {
         .update((val) => val!.title = articleTitleController.value.text);
 
     isTitleEmpty.value = false;
-  }
-
-  updateBody() {
-    articleSingleModel.update((val) => val!.content = articleBodyController);
-
-    isBodyLoading.value = false;
   }
 
   @override

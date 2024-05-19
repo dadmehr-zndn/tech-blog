@@ -5,7 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/components/customized_appbar.dart';
+import 'package:tech_blog/components/app_bars/customized_appbar.dart';
 import 'package:tech_blog/components/image_error_widget.dart';
 import 'package:tech_blog/components/loading_spinkit.dart';
 import 'package:tech_blog/constants/constants.dart';

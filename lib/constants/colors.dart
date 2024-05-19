@@ -18,6 +18,8 @@ class SolidColors {
   static const Color systemNavigationBar = Color(0xffffffff);
   static const Color systemStatusBar = Color(0xffffffff);
 
+  static const Color bottomSheetBgColor = Color(0xffffffff);
+
   static const Color changeProfilePhoto = Color(0xff286BB8);
   static const Color nameMain = Color(0xff420457);
   static const Color gmailMain = Color(0xff101010);

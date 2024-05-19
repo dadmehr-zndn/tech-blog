@@ -7,8 +7,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
+import 'package:tech_blog/components/app_bars/article_manage_appbar.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/components/row_icon_title.dart';
 import 'package:tech_blog/constants/constants.dart';
@@ -154,7 +156,7 @@ class ArticleEdittingScreen extends StatelessWidget {
                   ),
 
                   // AppBar
-                  singleContentAppBar(),
+                  articleManageAppBar(),
                 ],
               ),
 
@@ -200,44 +202,47 @@ class ArticleEdittingScreen extends StatelessWidget {
                     SizedBox(height: Get.height / 14.99),
 
                     // Choose Categories
-                    RowIconTitle(title: Strings.chooseCategory),
+                    GestureDetector(
+                        onTap: () {
+                          openChoosingCategoryBottomSheet();
+                        },
+                        child: RowIconTitle(title: Strings.chooseCategory)),
                     SizedBox(height: Get.height / 39.28),
                     SizedBox(
                       height: Get.height / 22.57,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: homeScreenController.tagsList.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.only(
-                              right: index == 0 ? 0 : Get.width / 29.37,
-                            ),
-                            child: GestureDetector(
-                              onTap: () async {},
-                              child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          right: Get.width / 29.37,
+                        ),
+                        child: articlesManageController
+                                    .articleSingleModel.value.catName ==
+                                null
+                            ? Text(
+                                Strings.noChosenCategory,
+                                style: noChosenCategoryTextStyle,
+                              )
+                            : Container(
                                 decoration: BoxDecoration(
                                   color: SolidColors.surface,
                                   //TODO: exact radius
                                   borderRadius: BorderRadius.circular(22),
                                 ),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: Get.width / 20),
-                                    child: Text(
-                                      homeScreenController
-                                          .tagsList[index].title!,
-                                      style: Get.textTheme.headline4!.copyWith(
-                                        color: SolidColors.textLabelTagInside,
-                                        fontSize: 13,
-                                      ),
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    right: Get.width / 20,
+                                    left: Get.width / 20,
+                                    top: Get.height / 145,
+                                  ),
+                                  child: Text(
+                                    articlesManageController
+                                        .articleSingleModel.value.catName!,
+                                    style: Get.textTheme.headline4!.copyWith(
+                                      color: SolidColors.textLabelTagInside,
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
                       ),
                     )
                   ],
@@ -260,5 +265,65 @@ class ArticleEdittingScreen extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  void openChoosingCategoryBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        height: Get.height / 1.5,
+        width: Get.width,
+        decoration: BoxDecoration(
+          color: SolidColors.bottomSheetBgColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(Get.height / 25),
+          child: Column(
+            children: [
+              Text(
+                Strings.chooseCategory,
+                style: choosingCategoryBottomSheetTextStyle,
+              ),
+              SizedBox(height: Get.height / 25),
+              SizedBox(
+                height: Get.height / 2.5,
+                child: MasonryGridView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: homeScreenController.tagsList.length,
+                  mainAxisSpacing: Get.width / 18.75,
+                  crossAxisSpacing: Get.height / 65.46,
+                  gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        articlesManageController.articleSingleModel
+                            .update((val) {
+                          val!.catName =
+                              homeScreenController.tagsList[index].title;
+                          val!.catiId = homeScreenController.tagsList[index].id;
+                        });
+
+                        Get.back();
+                      },
+                      child: Hashtag(
+                        size: Get.size,
+                        textTheme: Get.textTheme,
+                        index: index,
+                        isArticleManaging: true,
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

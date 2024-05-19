@@ -20,6 +20,7 @@ class Strings {
 
   // mataleb - 4
   static const String favouriteArticles = 'مقالات مورد علاقه';
+  static const String noChosenCategory = 'دسته بندی انتخاب نشده';
 
   // mataleb - 5
   static const String favouritePodcasts = 'پادکست های مورد علاقه';

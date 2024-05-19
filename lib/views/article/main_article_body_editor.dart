@@ -43,10 +43,9 @@ class MainArticleBodyEditor extends StatelessWidget {
                 ),
                 callbacks: Callbacks(
                   onChangeContent: (content) async {
-                    var body = await controller.getText();
-                    articlesManageController.articleBodyController = body;
-
-                    articlesManageController.updateBody();
+                    articlesManageController.articleSingleModel.update((val) {
+                      val!.content = content;
+                    });
 
                     log(articlesManageController.articleBodyController);
                   },

@@ -15,7 +15,7 @@ import 'package:tech_blog/controllers/article_single_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/article_single_model.dart';
 import 'package:tech_blog/views/article/articles_list_screen.dart';
-import '../../components/single_content_appbar.dart';
+import '../../components/app_bars/single_content_appbar.dart';
 
 class ArticleSingleScreen extends StatelessWidget {
   ArticleSingleScreen({super.key});
