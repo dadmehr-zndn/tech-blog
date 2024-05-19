@@ -16,12 +16,15 @@ class Strings {
 
   static const String editArticleTitleHintText = 'اینجا بنویس..';
   static const String sumbit = 'ثبت';
+  static const String mainArticleBodyEditting = 'بدنه مقالتو بنویس..';
 
   // mataleb - 4
   static const String favouriteArticles = 'مقالات مورد علاقه';
 
   // mataleb - 5
   static const String favouritePodcasts = 'پادکست های مورد علاقه';
+
+  static const String bodyEdittingAppBar = 'ویرایش بدنه اصلی';
 
   // main
   static const String viewTheHottestArticles = 'مشاهده داغ ترین نوشته ها ';

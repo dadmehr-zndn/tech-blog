@@ -9,10 +9,13 @@ import 'package:tech_blog/services/dio_service.dart';
 
 class ArticlesManageController extends GetxController {
   RxList<ArticleModel> articleList = RxList.empty();
-  Rx<ArticleSingleModel> articleSingleModel = ArticleSingleModel(image: '').obs;
+  Rx<ArticleSingleModel> articleSingleModel =
+      ArticleSingleModel(image: '', content: Strings.iAmMainArticleBody).obs;
   TextEditingController articleTitleController = TextEditingController();
+  var articleBodyController = '';
   RxBool loading = false.obs;
   RxBool isTitleEmpty = true.obs;
+  RxBool isBodyLoading = false.obs;
 
   getManagedArticles([String? userId]) async {
     print('userId: $userId');
@@ -38,6 +41,12 @@ class ArticlesManageController extends GetxController {
         .update((val) => val!.title = articleTitleController.value.text);
 
     isTitleEmpty.value = false;
+  }
+
+  updateBody() {
+    articleSingleModel.update((val) => val!.content = articleBodyController);
+
+    isBodyLoading.value = false;
   }
 
   @override
