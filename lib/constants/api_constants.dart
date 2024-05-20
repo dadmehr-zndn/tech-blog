@@ -14,4 +14,16 @@ class ApiConstants {
 
   static const String getMyArticles =
       '${baseUrl}article/get.php?command=published_by_me&user_id=';
+
+  static const String postArticle = '${baseUrl}article/post.php';
+}
+
+class ApiPostArticleKeys {
+  static const String title = 'title';
+  static const String content = 'content';
+  static const String catId = 'cat_id';
+  static const String tagList = 'tag_list';
+  static const String userId = 'user_id';
+  static const String image = 'image';
+  static const String command = 'command';
 }

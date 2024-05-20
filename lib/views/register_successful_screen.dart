@@ -25,7 +25,8 @@ class _RegisterSuccessfulScreenState extends State<RegisterSuccessfulScreen> {
   final _listViewController = ScrollController();
   TagModel? _selectedTwice;
 
-  var tagController = Get.find<HomeScreenController>().tagsList;
+  // var tagController = Get.find<HomeScreenController>().tagsList;
+  var tagController = Get.put(HomeScreenController()).tagsList;
 
   @override
   Widget build(BuildContext context) {

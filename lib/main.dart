@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
       title: 'Tech Blog',
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
+      initialBinding: HomeBinding(),
       theme: lightThemeData(textTheme),
       locale: Locale('fa'),
       //TODO: change it back to splash

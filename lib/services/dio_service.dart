@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:tech_blog/constants/storage.dart';
 import 'package:validators/validators.dart';
 
 class DioService {
@@ -24,6 +26,7 @@ class DioService {
       if (err is DioException) {
         //TODO: handle the error properly
         /// extracting status code
+        log('dioooo');
         var errMessageList = err.message!.split(' ');
         var statusCode = '';
 
@@ -41,12 +44,18 @@ class DioService {
   Future<dynamic> postMethod(Map<String, dynamic> map, String url) async {
     dio.options.headers['content-type'] = 'application/json';
 
+    var token = GetStorage().read(Storage.token);
+    if (token != null) {
+      dio.options.headers['authorization'] = token;
+    }
+
     return await dio
         .post(
       url,
       data: FormData.fromMap(map),
       options: Options(
-        responseType: ResponseType.json,
+        // Changed this part to plain
+        responseType: ResponseType.plain,
         method: 'POST',
       ),
     )

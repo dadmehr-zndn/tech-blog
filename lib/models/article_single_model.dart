@@ -7,7 +7,7 @@ class ArticleSingleModel {
     this.title,
     this.content,
     this.image,
-    this.catiId,
+    this.catId,
     this.catName,
     this.author,
     this.view,
@@ -19,7 +19,7 @@ class ArticleSingleModel {
   String? title;
   String? content;
   String? image;
-  String? catiId;
+  String? catId;
   String? catName;
   String? author;
   String? view;
@@ -34,12 +34,29 @@ class ArticleSingleModel {
     title = info['title'];
     content = info['content'];
     image = ApiConstants.baseDlUrl + info['image'];
-    catiId = info['cati_id'];
+    catId = info['cat_id'];
     catName = info['cat_name'];
     author = info['author'];
     view = info['view'];
     status = info['status'];
     createdAt = info['created_at'];
     isFavorite = map['isFavorite'];
+  }
+
+  @override
+  String toString() {
+    return '''
+id: $id
+title: $title 
+content: $content
+image: $image
+cat_id: $catId
+cat_name: $catName
+author: $author
+view: $view
+status: $status
+created_at: $createdAt
+isFavorite: $isFavorite
+''';
   }
 }
