@@ -9,7 +9,7 @@ import 'package:tech_blog/components/article_horizontal_list.dart';
 import 'package:tech_blog/components/hashtag.dart';
 import 'package:tech_blog/components/row_icon_title.dart';
 import 'package:tech_blog/constants/constants.dart';
-import 'package:tech_blog/controllers/article_list_controller.dart';
+import 'package:tech_blog/controllers/article/article_list_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
@@ -232,7 +232,7 @@ class HomeScreen extends StatelessWidget {
                                 .topPodcastsList[index].poster !=
                             "${ApiConstants.baseDlUrl}''"
                         ? homeScreenController.topPodcastsList[index].poster!
-                        : podcastList[index].imageUrl,
+                        : podcastList[index].imageUrl!,
                     imageBuilder: (context, imageProvider) {
                       return Container(
                         decoration: BoxDecoration(

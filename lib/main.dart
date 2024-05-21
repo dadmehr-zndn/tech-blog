@@ -9,6 +9,7 @@ import 'package:tech_blog/constants/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/themes/theme_data.dart';
+import 'package:tech_blog/views/podcast/podcasts_list_screen.dart';
 import 'package:tech_blog/views/splash_screen.dart';
 // import 'gen/fonts.gen.dart';
 // import 'gen/assets.gen.dart';
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
       theme: lightThemeData(textTheme),
       locale: Locale('fa'),
       //TODO: change it back to splash
-      home: SplashScreen(),
+      // home: SplashScreen(),
+      home: PodcastsListScreen(),
     );
   }
 }

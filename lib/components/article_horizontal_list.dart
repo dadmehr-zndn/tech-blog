@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/constants/colors.dart';
-import 'package:tech_blog/controllers/article_single_controller.dart';
+import 'package:tech_blog/controllers/article/article_single_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 
 class ArticlesHorizontalList extends StatelessWidget {

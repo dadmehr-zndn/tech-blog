@@ -9,8 +9,8 @@ import 'package:tech_blog/components/image_error_widget.dart';
 import 'package:tech_blog/components/loading_spinkit.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/themes/text_styles.dart';
-import 'package:tech_blog/controllers/article_list_controller.dart';
-import 'package:tech_blog/controllers/article_single_controller.dart';
+import 'package:tech_blog/controllers/article/article_list_controller.dart';
+import 'package:tech_blog/controllers/article/article_single_controller.dart';
 
 class ArticlesListScreen extends StatefulWidget {
   const ArticlesListScreen(
@@ -89,6 +89,7 @@ class _ArticlesListScreenState extends State<ArticlesListScreen> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    // Title
                                     SizedBox(
                                       width: size.width / 1.57,
                                       child: Text(

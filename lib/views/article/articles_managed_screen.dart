@@ -9,7 +9,7 @@ import 'package:tech_blog/components/app_bars/customized_appbar.dart';
 import 'package:tech_blog/components/image_error_widget.dart';
 import 'package:tech_blog/components/loading_spinkit.dart';
 import 'package:tech_blog/constants/constants.dart';
-import 'package:tech_blog/controllers/articles_manage_controller.dart';
+import 'package:tech_blog/controllers/article/articles_manage_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/themes/text_styles.dart';

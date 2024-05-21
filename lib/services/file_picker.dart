@@ -1,6 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/controllers/articles_manage_controller.dart';
+import 'package:tech_blog/controllers/article/articles_manage_controller.dart';
 import 'package:tech_blog/controllers/file_picker_controller.dart';
 
 FilePickerController filePickerController = Get.put(FilePickerController());

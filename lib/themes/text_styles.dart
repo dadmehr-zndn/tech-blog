@@ -13,7 +13,19 @@ TextStyle articleTitleTextStyle = const TextStyle(
   fontSize: 13,
   fontWeight: FontWeight.w400,
 );
+TextStyle podcastTitleTextStyle = const TextStyle(
+  color: SolidColors.articleTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 13,
+  fontWeight: FontWeight.w400,
+);
 TextStyle articleAuthorViewsTextStyle = const TextStyle(
+  color: SolidColors.articleSubTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 12,
+  fontWeight: FontWeight.w300,
+);
+TextStyle podcastAuthorViewsTextStyle = const TextStyle(
   color: SolidColors.articleSubTitle,
   fontFamily: 'ArtinSharp',
   fontSize: 12,

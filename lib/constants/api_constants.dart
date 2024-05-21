@@ -16,6 +16,10 @@ class ApiConstants {
       '${baseUrl}article/get.php?command=published_by_me&user_id=';
 
   static const String postArticle = '${baseUrl}article/post.php';
+
+  // Podcasts API
+  static const String getPodcastsList =
+      '${baseUrl}podcast/get.php?command=new&user_id=';
 }
 
 class ApiPostArticleKeys {

@@ -14,7 +14,7 @@ import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/components/row_icon_title.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/constants/storage.dart';
-import 'package:tech_blog/controllers/articles_manage_controller.dart';
+import 'package:tech_blog/controllers/article/articles_manage_controller.dart';
 import 'package:tech_blog/controllers/file_picker_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
