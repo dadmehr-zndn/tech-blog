@@ -12,4 +12,6 @@ class Routes {
 
   static const String registerSuccessful = '/RegisterSuccessfulScreen';
   static const String registerWelcome = '/RegisterWelcomeScreen';
+
+  static const String podcastsList = '/PodcastsListScreen';
 }
