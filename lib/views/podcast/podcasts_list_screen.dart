@@ -22,84 +22,91 @@ class PodcastsListScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: customizedAppBar(title: Strings.listOfPodcasts),
-        body: Padding(
-          padding: EdgeInsets.only(
-            top: Get.height / 23.38,
-            right: Get.width / 12.53,
-          ),
-          child: Obx(
-            () => ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: podcastsListController.podcastsList.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding:
-                      EdgeInsets.only(top: index == 0 ? 0 : Get.height / 28.88),
-                  child: SizedBox(
-                    height: Get.height / 8.5,
-                    child: Row(
-                      children: [
-                        //Podcast Image
-                        SizedBox(
-                          width: Get.width / 4.78,
-                          child: CachedNetworkImage(
-                            imageUrl: podcastsListController
-                                        .podcastsList[index].poster !=
-                                    "https://techblog.sasansafari.com''"
-                                ? podcastsListController
-                                    .podcastsList[index].poster!
-                                : podcastList[index].imageUrl,
-                            imageBuilder: (context, imageProvider) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  // TODO: check for the radius
-                                  borderRadius: BorderRadius.circular(18),
-                                  image: DecorationImage(
-                                    image: imageProvider,
-                                    fit: BoxFit.cover,
-                                  ),
+        body: Obx(
+          () => podcastsListController.isLoading.value == false
+              ? Padding(
+                  padding: EdgeInsets.only(
+                    top: Get.height / 23.38,
+                    right: Get.width / 12.53,
+                  ),
+                  child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
+                    itemCount: podcastsListController.podcastsList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            top: index == 0 ? 0 : Get.height / 28.88),
+                        child: SizedBox(
+                          height: Get.height / 8.5,
+                          child: Row(
+                            children: [
+                              //Podcast Image
+                              SizedBox(
+                                width: Get.width / 4.78,
+                                child: CachedNetworkImage(
+                                  imageUrl: podcastsListController
+                                              .podcastsList[index].poster !=
+                                          "https://techblog.sasansafari.com''"
+                                      ? podcastsListController
+                                          .podcastsList[index].poster!
+                                      : podcastList[index].imageUrl,
+                                  imageBuilder: (context, imageProvider) {
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        // TODO: check for the radius
+                                        borderRadius: BorderRadius.circular(18),
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  placeholder: (context, url) =>
+                                      LoadingSpinKit(),
+                                  errorWidget: (context, url, error) =>
+                                      ImageErrorWidget(),
                                 ),
-                              );
-                            },
-                            placeholder: (context, url) => LoadingSpinKit(),
-                            errorWidget: (context, url, error) =>
-                                ImageErrorWidget(),
+                              ),
+
+                              SizedBox(width: Get.width / 38.07),
+
+                              // Podcast title, author
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Title
+                                  Text(
+                                    podcastsListController
+                                        .podcastsList[index].title!,
+                                    style: podcastTitleTextStyle,
+                                  ),
+
+                                  SizedBox(height: Get.height / 85),
+
+                                  // Author
+                                  Text(
+                                    podcastsListController.podcastsList[index]
+                                                .publisher !=
+                                            null
+                                        ? podcastsListController
+                                            .podcastsList[index].publisher!
+                                        : Strings.name,
+                                    style: podcastAuthorViewsTextStyle,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-
-                        SizedBox(width: Get.width / 38.07),
-
-                        // Podcast title, author
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Title
-                            Text(
-                              podcastsListController.podcastsList[index].title!,
-                              style: podcastTitleTextStyle,
-                            ),
-
-                            SizedBox(height: Get.height / 85),
-
-                            // Author
-                            Text(
-                              podcastsListController
-                                          .podcastsList[index].publisher !=
-                                      null
-                                  ? podcastsListController
-                                      .podcastsList[index].publisher!
-                                  : Strings.name,
-                              style: podcastAuthorViewsTextStyle,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          ),
+                )
+              : SizedBox(
+                  height: Get.height,
+                  child: LoadingSpinKit(),
+                ),
         ),
       ),
     );

@@ -8,8 +8,10 @@ import 'package:tech_blog/services/dio_service.dart';
 
 class PodcastsListController extends GetxController {
   RxList<PodcastModel> podcastsList = RxList.empty();
+  RxBool isLoading = false.obs;
 
   getPodcasts() async {
+    isLoading.value = true;
     var response = await DioService().getMethod(ApiConstants.getPodcastsList);
 
     if (response.statusCode == 200) {
@@ -19,6 +21,7 @@ class PodcastsListController extends GetxController {
       log('getPodcastsList: ${response.data}');
       podcastsList.forEach((element) => print(element.poster));
     }
+    isLoading.value = false;
   }
 
   @override
