@@ -41,6 +41,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/pencil.png
   AssetGenImage get pencil => const AssetGenImage('assets/icons/pencil.png');
 
+  /// File path: assets/icons/podcastRepeat.png
+  AssetGenImage get podcastRepeat =>
+      const AssetGenImage('assets/icons/podcastRepeat.png');
+
   /// File path: assets/icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
 
@@ -54,6 +58,7 @@ class $AssetsIconsGen {
         managePodcasts,
         microphone,
         pencil,
+        podcastRepeat,
         user
       ];
 }

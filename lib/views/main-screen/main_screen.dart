@@ -228,11 +228,7 @@ class BottomNavigationBar extends StatelessWidget {
           child: Container(
             height: size.height / 12.41,
             width: size.width / 1.36,
-            decoration: BoxDecoration(
-              //TODO: check for the exact redius
-              borderRadius: BorderRadius.circular(16),
-              gradient: LinearGradient(colors: GradientColors.bottomNavigation),
-            ),
+            decoration: Decorations.mainGradientBoxDecoration,
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

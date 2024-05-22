@@ -3,15 +3,19 @@ import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 
+enum RowIcons { pencil, microphone }
+
 class RowIconTitle extends StatelessWidget {
-  const RowIconTitle({
+  RowIconTitle({
     super.key,
     this.sidePaddings = 0,
     required this.title,
+    this.rowIcon = RowIcons.pencil,
   });
 
   final double sidePaddings;
   final String title;
+  RowIcons? rowIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,9 @@ class RowIconTitle extends StatelessWidget {
       child: Row(
         children: [
           ImageIcon(
-            Assets.icons.pencil.image().image,
+            rowIcon == RowIcons.pencil
+                ? Assets.icons.pencil.image().image
+                : Assets.icons.microphone.image().image,
             color: SolidColors.showSectionTitle,
           ),
           SizedBox(width: Get.width / 32.18),

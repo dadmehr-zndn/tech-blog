@@ -55,6 +55,24 @@ TextStyle articleSingleTitleTextStyle = const TextStyle(
   fontSize: 17,
   fontWeight: FontWeight.w500,
 );
+TextStyle podcastSingleTitleTextStyle = const TextStyle(
+  color: SolidColors.articleTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 19,
+  fontWeight: FontWeight.w700,
+);
+TextStyle podcastSectionTitleTextStyle = const TextStyle(
+  color: SolidColors.articleTitle,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
+);
+TextStyle podcastDurationTextStyle = const TextStyle(
+  color: SolidColors.podcastDuration,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+);
 TextStyle articleSingleContentTextStyle = const TextStyle(
   color: SolidColors.articleTitle,
   fontFamily: 'ArtinSharp',

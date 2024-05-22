@@ -11,6 +11,7 @@ class SolidColors {
   static const Color profileTexts = Color(0xff000000);
 
   static Color clickSplashColor = primaryColor.withOpacity(0.1);
+  static const Color podcastRepeatIconColor = Color(0xff26DEE5);
 
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
@@ -21,6 +22,7 @@ class SolidColors {
   static const Color bottomSheetBgColor = Color(0xffffffff);
 
   static const Color changeProfilePhoto = Color(0xff286BB8);
+  static const Color podcastIconSingle = Color(0xff286BB8);
   static const Color nameMain = Color(0xff420457);
   static const Color gmailMain = Color(0xff101010);
   static const Color divideHorizontalLine = Color(0xff707070);
@@ -39,7 +41,7 @@ class SolidColors {
   static const Color author = Color(0xff252525);
   static const Color podcastSelected = Color(0xffFF8B1A);
   static const Color podcastNotSelected = Color(0xff000000);
-  static const Color podcastTime = Color(0xff747474);
+  static const Color podcastDuration = Color(0xff747474);
   static const Color podcastProgressFill = Color(0xffFF8B1A);
   static const Color podcastProgressBar = Color(0xffffffff);
   static const Color podcastTitle = Color(0xff000000);

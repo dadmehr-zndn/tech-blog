@@ -74,6 +74,7 @@ class HomeScreen extends StatelessWidget {
                       child: RowIconTitle(
                         title: Strings.viewTheHottestPodcasts,
                         sidePaddings: sidePaddings,
+                        rowIcon: RowIcons.microphone,
                       ),
                     ),
                     SizedBox(height: size.height / 37.09),
