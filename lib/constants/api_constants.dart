@@ -20,6 +20,8 @@ class ApiConstants {
   // Podcasts API
   static const String getPodcastsList =
       '${baseUrl}podcast/get.php?command=new&user_id=';
+  static const String getPodcastFiles =
+      '${baseUrl}podcast/get.php?command=get_files&podcats_id=';
 }
 
 class ApiPostArticleKeys {

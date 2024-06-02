@@ -12,6 +12,7 @@ import 'package:tech_blog/components/row_icon_title.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/article/article_list_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
+import 'package:tech_blog/controllers/podcast/podcast_single_controller.dart';
 import 'package:tech_blog/controllers/podcast/podcasts_list_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
@@ -38,6 +39,8 @@ class HomeScreen extends StatelessWidget {
   final double podcastPostHeight;
 
   HomeScreenController homeScreenController = Get.put(HomeScreenController());
+  // PodcastSingleController podcastSingleController =
+  //     Get.put(PodcastSingleController());
   var articleListController = Get.find<ArticleListController>();
 
   @override
@@ -56,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                     // HomePageViewHottestArticles
                     GestureDetector(
                       onTap: () {
-                        articleListController.getArticlesList();
+                        // articleListController.getArticlesList();
                         Get.toNamed(Routes.articlesList);
                       },
                       child: RowIconTitle(
@@ -228,51 +231,57 @@ class HomeScreen extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(
                 right: index == 0 ? sidePaddings : size.width / 19.56),
-            child: Column(
-              children: [
-                // podcast image
-                SizedBox(
-                  width: size.width / 3.16,
-                  height: size.height / 5.81,
-                  child: CachedNetworkImage(
-                    imageUrl: homeScreenController
-                                .topPodcastsList[index].poster !=
-                            "${ApiConstants.baseDlUrl}''"
-                        ? homeScreenController.topPodcastsList[index].poster!
-                        : podcastList[index].imageUrl!,
-                    imageBuilder: (context, imageProvider) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: () {
+                Get.toNamed(Routes.podcastSingle,
+                    arguments: homeScreenController.topPodcastsList[index]);
+              },
+              child: Column(
+                children: [
+                  // podcast image
+                  SizedBox(
+                    width: size.width / 3.16,
+                    height: size.height / 5.81,
+                    child: CachedNetworkImage(
+                      imageUrl: homeScreenController
+                                  .topPodcastsList[index].poster !=
+                              "${ApiConstants.baseDlUrl}''"
+                          ? homeScreenController.topPodcastsList[index].poster!
+                          : podcastList[index].imageUrl!,
+                      imageBuilder: (context, imageProvider) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    placeholder: (context, url) {
-                      return LoadingSpinKit();
-                    },
-                    errorWidget: (context, url, error) {
-                      return Icon(
-                        Icons.image_not_supported_outlined,
-                        color: Colors.grey,
-                        size: 38,
-                      );
-                    },
+                        );
+                      },
+                      placeholder: (context, url) {
+                        return LoadingSpinKit();
+                      },
+                      errorWidget: (context, url, error) {
+                        return Icon(
+                          Icons.image_not_supported_outlined,
+                          color: Colors.grey,
+                          size: 38,
+                        );
+                      },
+                    ),
                   ),
-                ),
 
-                SizedBox(height: size.height / 42.14),
+                  SizedBox(height: size.height / 42.14),
 
-                // podcast title
-                Text(
-                  homeScreenController.topPodcastsList[index].title!,
-                  style: textTheme.headline1!
-                      .copyWith(color: SolidColors.podcastTitle, fontSize: 14),
-                ),
-              ],
+                  // podcast title
+                  Text(
+                    homeScreenController.topPodcastsList[index].title!,
+                    style: textTheme.headline1!.copyWith(
+                        color: SolidColors.podcastTitle, fontSize: 14),
+                  ),
+                ],
+              ),
             ),
           );
         },

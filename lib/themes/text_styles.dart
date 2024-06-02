@@ -139,3 +139,9 @@ TextStyle noChosenCategoryTextStyle = const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w200,
 );
+TextStyle noPodcastFileTextStyle = const TextStyle(
+  color: SolidColors.timeCreated,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w200,
+);

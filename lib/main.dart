@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
       theme: lightThemeData(textTheme),
       locale: Locale('fa'),
       //TODO: change it back to splash
-      // home: SplashScreen(),
-      home: PodcastSingleScreen(),
+      home: SplashScreen(),
+      // home: PodcastSingleScreen(),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:tech_blog/views/article/article_single_screen.dart';
 import 'package:tech_blog/views/article/articles_list_screen.dart';
 import 'package:tech_blog/views/article/articles_managed_screen.dart';
 import 'package:tech_blog/views/main-screen/main_screen.dart';
+import 'package:tech_blog/views/podcast/podcast_single_screen.dart';
 import 'package:tech_blog/views/podcast/podcasts_list_screen.dart';
 import 'package:tech_blog/views/register_successful_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
@@ -46,6 +47,10 @@ class AppPages {
       name: Routes.podcastsList,
       page: () => PodcastsListScreen(),
       binding: PodcastBinding(),
+    ),
+    GetPage(
+      name: Routes.podcastSingle,
+      page: () => PodcastSingleScreen(),
     ),
   ];
 }

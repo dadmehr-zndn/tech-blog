@@ -18,6 +18,8 @@ class Strings {
   static const String sumbit = 'ثبت';
   static const String mainArticleBodyEditting = 'بدنه مقالتو بنویس..';
 
+  static const String noPodcastFile = 'فایلی وجود ندارد';
+
   // mataleb - 4
   static const String favouriteArticles = 'مقالات مورد علاقه';
   static const String noChosenCategory = 'دسته بندی انتخاب نشده';

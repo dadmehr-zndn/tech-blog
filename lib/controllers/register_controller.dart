@@ -1,6 +1,7 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -31,7 +32,6 @@ class RegisterController extends GetxController {
         await DioService().postMethod(map, ApiConstants.postRegisterEmail);
 
     //TODO: this section must delete
-    print(response.data['user_id']);
     email = emailTextEditingController.text;
     userId = response.data['user_id'];
   }

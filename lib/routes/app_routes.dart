@@ -14,4 +14,5 @@ class Routes {
   static const String registerWelcome = '/RegisterWelcomeScreen';
 
   static const String podcastsList = '/PodcastsListScreen';
+  static const String podcastSingle = '/PodcastSingleScreen';
 }

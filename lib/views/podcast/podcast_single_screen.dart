@@ -1,19 +1,35 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 //TODO: uncomment
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/constants/constants.dart';
+import 'package:tech_blog/controllers/podcast/podcast_single_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/models/home_top_podcasts_model.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
 class PodcastSingleScreen extends StatelessWidget {
-  const PodcastSingleScreen({super.key});
+  late PodcastSingleController podcastSingleController;
+  late HomeTopPodcastsModel podcastModel;
+
+  PodcastSingleScreen() {
+    podcastModel = Get.arguments;
+    podcastSingleController =
+        Get.put(PodcastSingleController(id: podcastModel.id));
+  }
 
   @override
   Widget build(BuildContext context) {
+    // bool isPlaying = podcastSingleController.isPlaying.value;
+
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: Padding(
@@ -47,15 +63,36 @@ class PodcastSingleScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        Icons.skip_next_rounded,
-                        size: 40,
-                        color: SolidColors.icon,
+                      GestureDetector(
+                        onTap: () {
+                          // podcastSingleController.player.seekToNext();
+                        },
+                        child: Icon(
+                          Icons.skip_next_rounded,
+                          size: 40,
+                          color: SolidColors.icon,
+                        ),
                       ),
-                      Icon(
-                        Icons.play_circle,
-                        size: 45,
-                        color: SolidColors.icon,
+                      GestureDetector(
+                        onTap: () {
+                          podcastSingleController.isPlaying.value
+                              ? podcastSingleController.player.pause()
+                              : podcastSingleController.player.play();
+
+                          podcastSingleController.isPlaying.value =
+                              podcastSingleController.player.playing;
+                          print(
+                              'isPlaying: ${podcastSingleController.isPlaying.value}');
+                        },
+                        child: Obx(
+                          () => Icon(
+                            podcastSingleController.isPlaying.value
+                                ? Icons.pause_circle_filled_rounded
+                                : Icons.play_circle_fill_rounded,
+                            size: 45,
+                            color: SolidColors.icon,
+                          ),
+                        ),
                       ),
                       Icon(
                         Icons.skip_previous_rounded,
@@ -85,9 +122,7 @@ class PodcastSingleScreen extends StatelessWidget {
                   SizedBox(
                     height: Get.height / 3.1,
                     child: CachedNetworkImage(
-                      imageUrl:
-                          //TODO: hardcode
-                          'https://tehranpodcast.ir/wp-content/uploads/2020/09/9061830-1600580901613-4facd1a4980a3.jpg',
+                      imageUrl: podcastModel.poster!,
                       imageBuilder: (context, imageProvider) {
                         return Container(
                           decoration: BoxDecoration(
@@ -132,7 +167,7 @@ class PodcastSingleScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(right: Get.width / 25),
                       child: Text(
-                        'پادکست : ' + 'Title',
+                        'پادکست : ${podcastModel.title}',
                         style: podcastSingleTitleTextStyle,
                       ),
                     ),
@@ -156,44 +191,72 @@ class PodcastSingleScreen extends StatelessWidget {
                     // Podcast Episodes
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: Get.width / 90),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        // primary: false,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding:
-                                EdgeInsets.only(bottom: Get.height / 33.86),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    // Microphone Icon
-                                    ImageIcon(
-                                      Assets.icons.microphone.image().image,
-                                      color: SolidColors.podcastIconSingle,
-                                    ),
+                      child: Obx(
+                        () => !podcastSingleController.isLoading.value
+                            ? podcastSingleController
+                                    .podcastFilesList.isNotEmpty
+                                ? ListView.builder(
+                                    shrinkWrap: true,
+                                    // primary: false,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: podcastSingleController
+                                        .podcastFilesList.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding: EdgeInsets.only(
+                                            bottom: Get.height / 33.86),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                // Microphone Icon
+                                                ImageIcon(
+                                                  Assets.icons.microphone
+                                                      .image()
+                                                      .image,
+                                                  color: SolidColors
+                                                      .podcastIconSingle,
+                                                ),
 
-                                    SizedBox(width: Get.width / 17.13),
+                                                SizedBox(
+                                                    width: Get.width / 17.13),
 
-                                    // Section name
-                                    Text(
-                                      'data',
-                                      style: podcastSectionTitleTextStyle,
+                                                // Section name
+                                                SizedBox(
+                                                  width: Get.width / 1.8,
+                                                  child: Text(
+                                                    podcastSingleController
+                                                        .podcastFilesList[index]
+                                                        .title!,
+                                                    style:
+                                                        podcastSectionTitleTextStyle,
+                                                    maxLines: 2,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            // Episode Duration
+                                            Text(
+                                              '${podcastSingleController.podcastFilesList[index].length!}:00',
+                                              style: podcastDurationTextStyle,
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  )
+                                : Center(
+                                    child: Text(
+                                      Strings.noPodcastFile,
+                                      style: noPodcastFileTextStyle,
                                     ),
-                                  ],
-                                ),
-                                // Episode Duration
-                                Text(
-                                  '25:00',
-                                  style: podcastDurationTextStyle,
-                                ),
-                              ],
-                            ),
-                          );
-                        },
+                                  )
+                            : SpinKitWave(
+                                color: SolidColors.primaryColor,
+                                size: 22,
+                              ),
                       ),
                     ),
                   ],
