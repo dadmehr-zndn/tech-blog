@@ -67,6 +67,12 @@ TextStyle podcastSectionTitleTextStyle = const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
 );
+TextStyle podcastSectionSelectedTextStyle = const TextStyle(
+  color: SolidColors.podcastSelected,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
+);
 TextStyle podcastDurationTextStyle = const TextStyle(
   color: SolidColors.podcastDuration,
   fontFamily: 'ArtinSharp',

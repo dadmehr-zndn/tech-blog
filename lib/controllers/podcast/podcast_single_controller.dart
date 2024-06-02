@@ -18,6 +18,7 @@ class PodcastSingleController extends GetxController {
   RxList<PodcastFilesModel> podcastFilesList = RxList.empty();
   RxBool isLoading = false.obs;
   RxBool isPlaying = false.obs;
+  RxInt currentFileIndex = 0.obs;
 
   getPodcastFiles() async {
     isLoading.value = true;

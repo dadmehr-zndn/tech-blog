@@ -17,13 +17,12 @@ import 'package:tech_blog/models/home_top_podcasts_model.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
 class PodcastSingleScreen extends StatelessWidget {
-  late PodcastSingleController podcastSingleController;
+  late PodcastSingleController podcastController;
   late HomeTopPodcastsModel podcastModel;
 
   PodcastSingleScreen() {
     podcastModel = Get.arguments;
-    podcastSingleController =
-        Get.put(PodcastSingleController(id: podcastModel.id));
+    podcastController = Get.put(PodcastSingleController(id: podcastModel.id));
   }
 
   @override
@@ -64,8 +63,11 @@ class PodcastSingleScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () =>
-                            podcastSingleController.player.seekToNext(),
+                        onTap: () async {
+                          await podcastController.player.seekToNext();
+                          podcastController.currentFileIndex.value =
+                              podcastController.player.currentIndex!;
+                        },
                         child: Icon(
                           Icons.skip_next_rounded,
                           size: 40,
@@ -74,18 +76,22 @@ class PodcastSingleScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          podcastSingleController.isPlaying.value
-                              ? podcastSingleController.player.pause()
-                              : podcastSingleController.player.play();
+                          podcastController.isPlaying.value
+                              ? podcastController.player.pause()
+                              : podcastController.player.play();
 
-                          podcastSingleController.isPlaying.value =
-                              podcastSingleController.player.playing;
+                          podcastController.isPlaying.value =
+                              podcastController.player.playing;
+
+                          podcastController.currentFileIndex.value =
+                              podcastController.player.currentIndex!;
+
                           print(
-                              'isPlaying: ${podcastSingleController.isPlaying.value}');
+                              'isPlaying: ${podcastController.isPlaying.value}');
                         },
                         child: Obx(
                           () => Icon(
-                            podcastSingleController.isPlaying.value
+                            podcastController.isPlaying.value
                                 ? Icons.pause_circle_filled_rounded
                                 : Icons.play_circle_fill_rounded,
                             size: 45,
@@ -94,8 +100,11 @@ class PodcastSingleScreen extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () =>
-                            podcastSingleController.player.seekToPrevious(),
+                        onTap: () async {
+                          await podcastController.player.seekToPrevious();
+                          podcastController.currentFileIndex.value =
+                              podcastController.player.currentIndex!;
+                        },
                         child: Icon(
                           Icons.skip_previous_rounded,
                           size: 40,
@@ -195,57 +204,74 @@ class PodcastSingleScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: Get.width / 90),
                       child: Obx(
-                        () => !podcastSingleController.isLoading.value
-                            ? podcastSingleController
-                                    .podcastFilesList.isNotEmpty
+                        () => !podcastController.isLoading.value
+                            ? podcastController.podcastFilesList.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
                                     // primary: false,
                                     physics: NeverScrollableScrollPhysics(),
-                                    itemCount: podcastSingleController
+                                    itemCount: podcastController
                                         .podcastFilesList.length,
                                     itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: EdgeInsets.only(
-                                            bottom: Get.height / 33.86),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                // Microphone Icon
-                                                ImageIcon(
-                                                  Assets.icons.microphone
-                                                      .image()
-                                                      .image,
-                                                  color: SolidColors
-                                                      .podcastIconSingle,
-                                                ),
+                                      return GestureDetector(
+                                        onTap: () async {
+                                          await podcastController.player.seek(
+                                            Duration.zero,
+                                            index: index,
+                                          );
 
-                                                SizedBox(
-                                                    width: Get.width / 17.13),
-
-                                                // Section name
-                                                SizedBox(
-                                                  width: Get.width / 1.8,
-                                                  child: Text(
-                                                    podcastSingleController
-                                                        .podcastFilesList[index]
-                                                        .title!,
-                                                    style:
-                                                        podcastSectionTitleTextStyle,
-                                                    maxLines: 2,
+                                          podcastController
+                                              .currentFileIndex.value = index;
+                                        },
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              bottom: Get.height / 33.86),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  // Microphone Icon
+                                                  ImageIcon(
+                                                    Assets.icons.microphone
+                                                        .image()
+                                                        .image,
+                                                    color: SolidColors
+                                                        .podcastIconSingle,
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            // Episode Duration
-                                            Text(
-                                              '${podcastSingleController.podcastFilesList[index].length!}:00',
-                                              style: podcastDurationTextStyle,
-                                            ),
-                                          ],
+
+                                                  SizedBox(
+                                                      width: Get.width / 17.13),
+
+                                                  // Section name
+                                                  SizedBox(
+                                                    width: Get.width / 1.8,
+                                                    child: Obx(
+                                                      () => Text(
+                                                        podcastController
+                                                            .podcastFilesList[
+                                                                index]
+                                                            .title!,
+                                                        style: podcastController
+                                                                    .currentFileIndex
+                                                                    .value ==
+                                                                index
+                                                            ? podcastSectionSelectedTextStyle
+                                                            : podcastSectionTitleTextStyle,
+                                                        maxLines: 2,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              // Episode Duration
+                                              Text(
+                                                '${podcastController.podcastFilesList[index].length!}:00',
+                                                style: podcastDurationTextStyle,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     },
