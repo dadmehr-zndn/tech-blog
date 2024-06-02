@@ -64,9 +64,8 @@ class PodcastSingleScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          // podcastSingleController.player.seekToNext();
-                        },
+                        onTap: () =>
+                            podcastSingleController.player.seekToNext(),
                         child: Icon(
                           Icons.skip_next_rounded,
                           size: 40,
@@ -94,10 +93,14 @@ class PodcastSingleScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(
-                        Icons.skip_previous_rounded,
-                        size: 40,
-                        color: SolidColors.icon,
+                      GestureDetector(
+                        onTap: () =>
+                            podcastSingleController.player.seekToPrevious(),
+                        child: Icon(
+                          Icons.skip_previous_rounded,
+                          size: 40,
+                          color: SolidColors.icon,
+                        ),
                       ),
                       SizedBox(width: Get.width / 7.2),
                       ImageIcon(

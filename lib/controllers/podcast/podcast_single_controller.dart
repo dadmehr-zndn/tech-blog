@@ -56,4 +56,11 @@ class PodcastSingleController extends GetxController {
       initialPosition: Duration.zero,
     );
   }
+
+  @override
+  void onClose() {
+    player.dispose();
+
+    super.onClose();
+  }
 }
