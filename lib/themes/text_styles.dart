@@ -79,6 +79,12 @@ TextStyle podcastDurationTextStyle = const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w400,
 );
+TextStyle podcastProgressDurationTextStyle = const TextStyle(
+  color: SolidColors.white,
+  fontFamily: 'ArtinSharp',
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+);
 TextStyle articleSingleContentTextStyle = const TextStyle(
   color: SolidColors.articleTitle,
   fontFamily: 'ArtinSharp',
