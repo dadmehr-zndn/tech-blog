@@ -84,6 +84,8 @@ class PodcastSingleScreen extends StatelessWidget {
                             await podcastController.player.seekToNext();
                             podcastController.currentFileIndex.value =
                                 podcastController.player.currentIndex!;
+
+                            podcastController.startProgressing();
                           },
                           child: Icon(
                             Icons.skip_next_rounded,
@@ -126,6 +128,8 @@ class PodcastSingleScreen extends StatelessWidget {
                             await podcastController.player.seekToPrevious();
                             podcastController.currentFileIndex.value =
                                 podcastController.player.currentIndex!;
+
+                            podcastController.startProgressing();
                           },
                           child: Icon(
                             Icons.skip_previous_rounded,
