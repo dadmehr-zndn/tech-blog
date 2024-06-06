@@ -15,4 +15,5 @@ class Routes {
 
   static const String podcastsList = '/PodcastsListScreen';
   static const String podcastSingle = '/PodcastSingleScreen';
+  static const String initialRoute = '/SplashScreen';
 }

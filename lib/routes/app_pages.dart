@@ -9,11 +9,16 @@ import 'package:tech_blog/views/podcast/podcast_single_screen.dart';
 import 'package:tech_blog/views/podcast/podcasts_list_screen.dart';
 import 'package:tech_blog/views/register_successful_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
+import 'package:tech_blog/views/splash_screen.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   static final routes = [
+    GetPage(
+      name: Routes.initialRoute,
+      page: () => const SplashScreen(),
+    ),
     GetPage(
       name: Routes.main,
       page: () => const MainScreen(),
