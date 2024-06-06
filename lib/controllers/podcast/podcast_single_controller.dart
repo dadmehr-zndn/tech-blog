@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:get/get.dart';
@@ -39,6 +40,27 @@ class PodcastSingleController extends GetxController {
       log('getPodcastFiles: ${response.data}');
       print('podcastFilesLength: ${podcastFilesList.length}');
     }
+  }
+
+  Rx<Duration> progressValue = const Duration(seconds: 0).obs;
+  Rx<Duration> bufferedValue = const Duration(seconds: 0).obs;
+  Timer? timer;
+  startProgressing() {
+    const tick = Duration(seconds: 1);
+    int duration = player.duration!.inSeconds - player.position.inSeconds;
+
+    if (timer != null && timer!.isActive) {
+      timer!.cancel();
+      timer = null;
+    }
+
+    timer = Timer.periodic(tick, (timer) {
+      duration--;
+      progressValue.value = player.position;
+      bufferedValue.value = player.bufferedPosition;
+
+      if (duration <= 0) timer.cancel();
+    });
   }
 
   @override

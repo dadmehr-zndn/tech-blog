@@ -2,6 +2,7 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,91 +36,113 @@ class PodcastSingleScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               horizontal: Get.width / 12.53, vertical: Get.height / 63.35),
           child: Container(
-            height: Get.height / 7,
+            height: Get.height / 5.5,
             decoration: Decorations.mainGradientBoxDecoration,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Progress Bar
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Get.height / 16.5),
-                  child: Transform.flip(
-                    flipX: true,
-                    child: LinearProgressIndicator(
-                      value: 0.4,
-                      color: SolidColors.podcastProgressFill,
-                      backgroundColor: SolidColors.podcastProgressBar,
-                      minHeight: Get.height / 130.93,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: Get.height / 90),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Progress Bar
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: Get.height / 16.5),
+                    child: Obx(
+                      () => ProgressBar(
+                        baseBarColor: SolidColors.podcastProgressBar,
+                        progressBarColor: SolidColors.podcastProgressFill,
+                        thumbColor:
+                            SolidColors.podcastProgressFill.withGreen(210),
+                        bufferedBarColor: SolidColors.podcastBufferedColor,
+                        timeLabelTextStyle: podcastProgressDurationTextStyle,
+                        thumbRadius: 7,
+                        thumbGlowRadius: 15,
+                        progress: podcastController.progressValue.value,
+                        buffered: podcastController.bufferedValue.value,
+                        total: podcastController.player.duration ??
+                            Duration(seconds: 0),
+                        onSeek: (duration) {
+                          podcastController.player.seek(duration);
+                          podcastController.player.playing
+                              ? podcastController.startProgressing()
+                              : podcastController.timer!.cancel();
+                        },
+                      ),
                     ),
                   ),
-                ),
 
-                SizedBox(height: Get.height / 46.76),
+                  SizedBox(height: Get.height / 46.76),
 
-                // Action Buttons
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Get.width / 9),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () async {
-                          await podcastController.player.seekToNext();
-                          podcastController.currentFileIndex.value =
-                              podcastController.player.currentIndex!;
-                        },
-                        child: Icon(
-                          Icons.skip_next_rounded,
-                          size: 40,
-                          color: SolidColors.icon,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          podcastController.isPlaying.value
-                              ? podcastController.player.pause()
-                              : podcastController.player.play();
-
-                          podcastController.isPlaying.value =
-                              podcastController.player.playing;
-
-                          podcastController.currentFileIndex.value =
-                              podcastController.player.currentIndex!;
-
-                          print(
-                              'isPlaying: ${podcastController.isPlaying.value}');
-                        },
-                        child: Obx(
-                          () => Icon(
-                            podcastController.isPlaying.value
-                                ? Icons.pause_circle_filled_rounded
-                                : Icons.play_circle_fill_rounded,
-                            size: 45,
+                  // Action Buttons
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: Get.width / 9),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () async {
+                            await podcastController.player.seekToNext();
+                            podcastController.currentFileIndex.value =
+                                podcastController.player.currentIndex!;
+                          },
+                          child: Icon(
+                            Icons.skip_next_rounded,
+                            size: 40,
                             color: SolidColors.icon,
                           ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () async {
-                          await podcastController.player.seekToPrevious();
-                          podcastController.currentFileIndex.value =
-                              podcastController.player.currentIndex!;
-                        },
-                        child: Icon(
-                          Icons.skip_previous_rounded,
-                          size: 40,
-                          color: SolidColors.icon,
+                        GestureDetector(
+                          onTap: () {
+                            if (podcastController.isPlaying.value) {
+                              podcastController.player.pause();
+                              podcastController.timer!.cancel();
+                            } else {
+                              podcastController.player.play();
+                              podcastController.startProgressing();
+                            }
+
+                            // podcastController.isPlaying.value
+                            //     ? podcastController.player.pause()
+                            //     : podcastController.player.play();
+
+                            podcastController.isPlaying.value =
+                                podcastController.player.playing;
+
+                            podcastController.currentFileIndex.value =
+                                podcastController.player.currentIndex!;
+                          },
+                          child: Obx(
+                            () => Icon(
+                              podcastController.isPlaying.value
+                                  ? Icons.pause_circle_filled_rounded
+                                  : Icons.play_circle_fill_rounded,
+                              size: 45,
+                              color: SolidColors.icon,
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(width: Get.width / 7.2),
-                      ImageIcon(
-                        Assets.icons.podcastRepeat.image().image,
-                        color: SolidColors.podcastRepeatIconColor,
-                      ),
-                    ],
+                        GestureDetector(
+                          onTap: () async {
+                            await podcastController.player.seekToPrevious();
+                            podcastController.currentFileIndex.value =
+                                podcastController.player.currentIndex!;
+                          },
+                          child: Icon(
+                            Icons.skip_previous_rounded,
+                            size: 40,
+                            color: SolidColors.icon,
+                          ),
+                        ),
+                        SizedBox(width: Get.width / 7.2),
+                        ImageIcon(
+                          Assets.icons.podcastRepeat.image().image,
+                          color: SolidColors.podcastRepeatIconColor,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
