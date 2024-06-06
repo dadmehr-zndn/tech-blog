@@ -63,6 +63,17 @@ class PodcastSingleController extends GetxController {
     });
   }
 
+  RxBool isRepeat = false.obs;
+  toggleRepeatMode() {
+    if (isRepeat.value) {
+      isRepeat.value = !isRepeat.value;
+      player.setLoopMode(LoopMode.off);
+    } else {
+      isRepeat.value = !isRepeat.value;
+      player.setLoopMode(LoopMode.all);
+    }
+  }
+
   @override
   void onInit() async {
     super.onInit();

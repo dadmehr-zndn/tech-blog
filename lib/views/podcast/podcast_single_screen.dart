@@ -134,9 +134,16 @@ class PodcastSingleScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: Get.width / 7.2),
-                        ImageIcon(
-                          Assets.icons.podcastRepeat.image().image,
-                          color: SolidColors.podcastRepeatIconColor,
+                        GestureDetector(
+                          onTap: () => podcastController.toggleRepeatMode(),
+                          child: Obx(
+                            () => ImageIcon(
+                              Assets.icons.podcastRepeat.image().image,
+                              color: podcastController.isRepeat.value
+                                  ? SolidColors.podcastRepeatIconColor
+                                  : SolidColors.white,
+                            ),
+                          ),
                         ),
                       ],
                     ),
