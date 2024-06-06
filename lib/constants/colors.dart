@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class SolidColors {
   SolidColors._();
 
@@ -15,6 +17,8 @@ class SolidColors {
 
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
+
+  static Color podcastBufferedColor = Colors.grey.withOpacity(0.5);
 
   static const Color systemNavigationBar = Color(0xffffffff);
   static const Color systemStatusBar = Color(0xffffffff);
