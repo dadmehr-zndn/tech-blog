@@ -1,6 +1,8 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -40,12 +42,10 @@ class MyApp extends StatelessWidget {
       title: 'Tech Blog',
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
+      initialRoute: Routes.initialRoute,
       initialBinding: HomeBinding(),
       theme: lightThemeData(textTheme),
       locale: Locale('fa'),
-      //TODO: change it back to splash
-      home: SplashScreen(),
-      // home: PodcastSingleScreen(),
     );
   }
 }
