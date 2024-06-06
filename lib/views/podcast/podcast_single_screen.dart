@@ -256,6 +256,8 @@ class PodcastSingleScreen extends StatelessWidget {
 
                                           podcastController
                                               .currentFileIndex.value = index;
+
+                                          podcastController.startProgressing();
                                         },
                                         child: Padding(
                                           padding: EdgeInsets.only(
