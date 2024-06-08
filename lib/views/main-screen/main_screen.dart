@@ -7,6 +7,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/constants/dimens.dart';
 import 'package:tech_blog/constants/storage.dart';
+import 'package:tech_blog/controllers/article/article_list_controller.dart';
 import 'package:tech_blog/controllers/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/views/main-screen/profile_screen.dart';
@@ -26,6 +27,9 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   RxInt selectedScreenIndex = 0.obs;
   final _scaffolKkey = GlobalKey<ScaffoldState>();
+
+  ArticleListController articleListController =
+      Get.put(ArticleListController());
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,7 @@ import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 
+// ignore: must_be_immutable
 class Hashtag extends StatelessWidget {
   Hashtag({
     super.key,

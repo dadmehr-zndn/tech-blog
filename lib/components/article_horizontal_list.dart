@@ -6,6 +6,7 @@ import 'package:tech_blog/constants/colors.dart';
 import 'package:tech_blog/controllers/article/article_single_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 
+// ignore: must_be_immutable
 class ArticlesHorizontalList extends StatelessWidget {
   ArticlesHorizontalList({
     super.key,

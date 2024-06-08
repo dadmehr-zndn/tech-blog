@@ -55,7 +55,7 @@ class DioService {
       data: FormData.fromMap(map),
       options: Options(
         // Changed this part to plain
-        responseType: ResponseType.plain,
+        responseType: ResponseType.json,
         method: 'POST',
       ),
     )

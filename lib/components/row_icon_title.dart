@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
@@ -5,6 +7,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 
 enum RowIcons { pencil, microphone }
 
+// ignore: must_be_immutable
 class RowIconTitle extends StatelessWidget {
   RowIconTitle({
     super.key,
