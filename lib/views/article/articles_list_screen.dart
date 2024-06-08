@@ -4,9 +4,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/components/app_bars/customized_appbar.dart';
-import 'package:tech_blog/components/image_error_widget.dart';
-import 'package:tech_blog/components/loading_spinkit.dart';
+import 'package:tech_blog/widgets/app_bars/customized_appbar.dart';
+import 'package:tech_blog/widgets/image_error_widget.dart';
+import 'package:tech_blog/widgets/loading_spinkit.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 import 'package:tech_blog/controllers/article/article_list_controller.dart';

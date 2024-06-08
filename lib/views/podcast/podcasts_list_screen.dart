@@ -4,7 +4,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/components/components.dart';
+import 'package:tech_blog/widgets/components.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/podcast/podcasts_list_controller.dart';
 import 'package:tech_blog/models/fake_data.dart';

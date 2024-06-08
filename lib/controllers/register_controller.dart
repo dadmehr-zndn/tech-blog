@@ -6,7 +6,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:tech_blog/components/main_screen_bottom_sheet.dart';
+import 'package:tech_blog/widgets/main_screen_bottom_sheet.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/constants/storage.dart';
 import 'package:tech_blog/routes/app_pages.dart';

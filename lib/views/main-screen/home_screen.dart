@@ -5,9 +5,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/components/article_horizontal_list.dart';
-import 'package:tech_blog/components/hashtag.dart';
-import 'package:tech_blog/components/row_icon_title.dart';
+import 'package:tech_blog/widgets/article_horizontal_list.dart';
+import 'package:tech_blog/widgets/hashtag.dart';
+import 'package:tech_blog/widgets/row_icon_title.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/article/article_list_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
@@ -15,7 +15,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
 import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/views/article/articles_list_screen.dart';
-import '../../components/loading_spinkit.dart';
+import '../../widgets/loading_spinkit.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {

@@ -13,7 +13,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/views/main-screen/profile_screen.dart';
 import 'package:tech_blog/views/register_welcome_screen.dart';
 import 'home_screen.dart';
-import '../../components/functions.dart';
+import '../../widgets/functions.dart';
 
 enum Screen { home, profile }
 

@@ -2,8 +2,8 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:tech_blog/components/profile_divider.dart';
-import 'package:tech_blog/components/profile_text_button.dart';
+import 'package:tech_blog/widgets/profile_divider.dart';
+import 'package:tech_blog/widgets/profile_text_button.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 

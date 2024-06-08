@@ -5,8 +5,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/components/image_error_widget.dart';
-import 'package:tech_blog/components/loading_spinkit.dart';
+import 'package:tech_blog/widgets/image_error_widget.dart';
+import 'package:tech_blog/widgets/loading_spinkit.dart';
 import 'package:tech_blog/constants/colors.dart';
 import 'package:tech_blog/constants/strings.dart';
 import 'package:tech_blog/themes/text_styles.dart';
@@ -15,7 +15,7 @@ import 'package:tech_blog/controllers/article/article_single_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/article_single_model.dart';
 import 'package:tech_blog/views/article/articles_list_screen.dart';
-import '../../components/app_bars/single_content_appbar.dart';
+import '../../widgets/app_bars/single_content_appbar.dart';
 
 // ignore: must_be_immutable
 class ArticleSingleScreen extends StatelessWidget {

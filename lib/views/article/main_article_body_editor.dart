@@ -6,7 +6,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
-import 'package:tech_blog/components/components.dart';
+import 'package:tech_blog/widgets/components.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/article/articles_manage_controller.dart';
 import 'package:tech_blog/themes/text_styles.dart';
