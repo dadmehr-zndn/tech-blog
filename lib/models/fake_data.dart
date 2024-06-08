@@ -1,6 +1,6 @@
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/home_tag_model.dart';
-import 'package:tech_blog/models/podcast_fake_model.dart';
+import 'package:tech_blog/models/home/home_tag_model.dart';
+import 'package:tech_blog/models/podcast/podcast_fake_model.dart';
 
 import 'models.dart';
 

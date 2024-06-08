@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/api_constants.dart';
-import 'package:tech_blog/models/article_model.dart';
-import 'package:tech_blog/models/article_single_model.dart';
-import 'package:tech_blog/models/home_tag_model.dart';
+import 'package:tech_blog/models/article/article_model.dart';
+import 'package:tech_blog/models/article/article_single_model.dart';
+import 'package:tech_blog/models/home/home_tag_model.dart';
 import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/services/dio_service.dart';
 

@@ -8,8 +8,8 @@ import 'package:tech_blog/constants/commands.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/constants/storage.dart';
 import 'package:tech_blog/controllers/file_picker_controller.dart';
-import 'package:tech_blog/models/article_model.dart';
-import 'package:tech_blog/models/article_single_model.dart';
+import 'package:tech_blog/models/article/article_model.dart';
+import 'package:tech_blog/models/article/article_single_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
 class ArticlesManageController extends GetxController {

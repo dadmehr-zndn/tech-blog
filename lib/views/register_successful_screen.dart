@@ -9,7 +9,7 @@ import 'package:tech_blog/widgets/hashtag.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/home_tag_model.dart';
+import 'package:tech_blog/models/home/home_tag_model.dart';
 import 'package:tech_blog/models/models.dart';
 import 'package:tech_blog/routes/app_pages.dart';
 

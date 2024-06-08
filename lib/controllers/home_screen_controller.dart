@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
-import 'package:tech_blog/models/article_model.dart';
-import 'package:tech_blog/models/home_poster_model.dart';
-import 'package:tech_blog/models/home_tag_model.dart';
-import 'package:tech_blog/models/home_top_podcasts_model.dart';
+import 'package:tech_blog/models/article/article_model.dart';
+import 'package:tech_blog/models/home/home_poster_model.dart';
+import 'package:tech_blog/models/home/home_tag_model.dart';
+import 'package:tech_blog/models/home/home_top_podcasts_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
 class HomeScreenController extends GetxController {

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:tech_blog/constants/api_constants.dart';
 import 'package:tech_blog/models/models.dart';
-import 'package:tech_blog/models/podcast_files_model.dart';
+import 'package:tech_blog/models/podcast/podcast_files_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
 class PodcastSingleController extends GetxController {

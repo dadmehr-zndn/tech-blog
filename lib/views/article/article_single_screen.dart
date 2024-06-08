@@ -13,7 +13,7 @@ import 'package:tech_blog/themes/text_styles.dart';
 import 'package:tech_blog/controllers/article/article_list_controller.dart';
 import 'package:tech_blog/controllers/article/article_single_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/article_single_model.dart';
+import 'package:tech_blog/models/article/article_single_model.dart';
 import 'package:tech_blog/views/article/articles_list_screen.dart';
 import '../../widgets/app_bars/single_content_appbar.dart';
 

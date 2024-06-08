@@ -14,7 +14,7 @@ import 'package:tech_blog/widgets/components.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/podcast/podcast_single_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/home_top_podcasts_model.dart';
+import 'package:tech_blog/models/home/home_top_podcasts_model.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
 // ignore: must_be_immutable
