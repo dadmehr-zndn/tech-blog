@@ -1,17 +1,15 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use, sort_child_properties_last
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/views/main-screen/main_screen.dart';
-import 'package:tech_blog/views/register_successful_screen.dart';
 import 'package:validators/validators.dart';
 
+// ignore: must_be_immutable
 class RegisterWelcomeScreen extends StatelessWidget {
   RegisterWelcomeScreen({super.key});
 

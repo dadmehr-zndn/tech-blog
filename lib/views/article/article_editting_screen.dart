@@ -8,12 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:tech_blog/components/app_bars/article_manage_appbar.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/components/row_icon_title.dart';
 import 'package:tech_blog/constants/constants.dart';
-import 'package:tech_blog/constants/storage.dart';
 import 'package:tech_blog/controllers/article/articles_manage_controller.dart';
 import 'package:tech_blog/controllers/file_picker_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
@@ -22,6 +20,7 @@ import 'package:tech_blog/services/file_picker.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 import 'package:tech_blog/views/article/main_article_body_editor.dart';
 
+// ignore: must_be_immutable
 class ArticleEdittingScreen extends StatelessWidget {
   ArticleEdittingScreen({super.key});
 
@@ -313,7 +312,7 @@ class ArticleEdittingScreen extends StatelessWidget {
                             .update((val) {
                           val!.catName =
                               homeScreenController.tagsList[index].title;
-                          val!.catId = homeScreenController.tagsList[index].id;
+                          val.catId = homeScreenController.tagsList[index].id;
                         });
 
                         Get.back();

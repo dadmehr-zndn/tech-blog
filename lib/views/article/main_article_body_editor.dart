@@ -11,6 +11,7 @@ import 'package:tech_blog/constants/constants.dart';
 import 'package:tech_blog/controllers/article/articles_manage_controller.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
+// ignore: must_be_immutable
 class MainArticleBodyEditor extends StatelessWidget {
   MainArticleBodyEditor({super.key});
 

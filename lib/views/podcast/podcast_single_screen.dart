@@ -17,6 +17,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/home_top_podcasts_model.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
+// ignore: must_be_immutable
 class PodcastSingleScreen extends StatelessWidget {
   late PodcastSingleController podcastController;
   late HomeTopPodcastsModel podcastModel;

@@ -22,6 +22,7 @@ class DioService {
         .then((response) {
       return response;
       //TODO: here
+      // ignore: body_might_complete_normally_catch_error
     }).catchError((err) {
       if (err is DioException) {
         //TODO: handle the error properly

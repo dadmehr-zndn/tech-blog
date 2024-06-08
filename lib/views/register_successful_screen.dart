@@ -12,7 +12,6 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/home_tag_model.dart';
 import 'package:tech_blog/models/models.dart';
 import 'package:tech_blog/routes/app_pages.dart';
-import 'package:tech_blog/views/main-screen/main_screen.dart';
 
 class RegisterSuccessfulScreen extends StatefulWidget {
   const RegisterSuccessfulScreen({super.key});

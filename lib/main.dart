@@ -1,8 +1,6 @@
 //TODO: uncomment
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -11,9 +9,6 @@ import 'package:tech_blog/constants/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/themes/theme_data.dart';
-import 'package:tech_blog/views/podcast/podcast_single_screen.dart';
-import 'package:tech_blog/views/podcast/podcasts_list_screen.dart';
-import 'package:tech_blog/views/splash_screen.dart';
 // import 'gen/fonts.gen.dart';
 // import 'gen/assets.gen.dart';
 

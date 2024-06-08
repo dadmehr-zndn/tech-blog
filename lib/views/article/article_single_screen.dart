@@ -17,6 +17,7 @@ import 'package:tech_blog/models/article_single_model.dart';
 import 'package:tech_blog/views/article/articles_list_screen.dart';
 import '../../components/app_bars/single_content_appbar.dart';
 
+// ignore: must_be_immutable
 class ArticleSingleScreen extends StatelessWidget {
   ArticleSingleScreen({super.key});
 

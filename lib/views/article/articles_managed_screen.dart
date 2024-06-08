@@ -14,6 +14,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/routes/app_pages.dart';
 import 'package:tech_blog/themes/text_styles.dart';
 
+// ignore: must_be_immutable
 class ArticlesManagedScreen extends StatelessWidget {
   ArticlesManagedScreen({super.key});
 
